@@ -1,0 +1,52 @@
+<template>
+	<view>
+		
+		<view v-for="item in infoList" :key="item.infoId" class="info-item">
+			<u-image
+				:src="item.surfaceImg"
+				width="150"
+				height="150"
+				border-radius="10"
+				:fade="true"
+				duration="450"
+				class="goods-cover"
+				:lazy-load="true"
+				mode="widthFix"
+			></u-image>
+			<view class="u-flex-col u-m-l-20">
+				<text class="u-m-t-10">{{item.infoTitle}}</text>
+				<text>{{item.infoDesc}}</text>
+				<text>{{item.issuer}}</text>
+				<text class="u-tips-color u-font-24">{{item.createTime | fomatTime}}</text>
+			</view>
+		</view>
+		<u-divider v-show="dataNull" margin-top="20" color="" half-width="200">到底了</u-divider>
+	</view>
+</template>
+
+<script>
+export default {
+	data() {
+		return {};
+	},
+	computed:{
+		createTime:()=>{
+			
+		}
+	},
+	props: {
+		infoList: Array,
+		dataNull: Boolean
+	}
+};
+</script>
+
+<style lang="scss" scoped>
+.info-item {
+	display: flex;
+	flex-direction: row;
+	margin-top: 20rpx;
+	font-size: 26rpx;
+	color: $u-content-color;
+}
+</style>
