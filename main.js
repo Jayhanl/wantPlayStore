@@ -5,7 +5,7 @@ import store from '@/common/store'
 import api from '@/common/request/index'
 import tools from '@/common/utils/tools'
 import uView from "uview-ui";
-require('@/common/utils/filter.js')
+// require('@/common/utils/filter.js')
 import {API_URL} from '@/env'
 
 import {

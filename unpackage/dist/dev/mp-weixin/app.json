@@ -56,6 +56,5 @@
       "desc": "获取用户当前位置"
     }
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap57.json"
+  "usingComponents": {}
 }

@@ -16,14 +16,18 @@
 @import 'static/css/master.scss';
 
 /* 颜色变量 */
+
 $color-main: #f06c7a;
+
 .color-main {
 	color: $color-main !important;
 }
+
 .bg-main {
 	background-color: $color-main !important;
 	color: #fff !important;
 }
+
 /* 行为相关颜色 */
 $uni-color-primary: #007aff;
 $uni-color-success: #4cd964;

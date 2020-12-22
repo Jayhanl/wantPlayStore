@@ -48,6 +48,11 @@ export default {
 			auth: false,
 			method: 'GET',
 		},
+		merch_label: {//商家标签
+			url: 'data/merch_label',
+			auth: false,
+			method: 'GET',
+		},
 	},
 
 	/** 商家模块 ↓ **/

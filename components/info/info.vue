@@ -17,7 +17,7 @@
 				<text class="u-m-t-10">{{item.infoTitle}}</text>
 				<text>{{item.infoDesc}}</text>
 				<text>{{item.issuer}}</text>
-				<text class="u-tips-color u-font-24">{{item.createTime | fomatTime}}</text>
+				<text class="u-tips-color u-font-24">{{item.createTime | timeFrom}}</text>
 			</view>
 		</view>
 		<u-divider v-show="dataNull" margin-top="20" color="" half-width="200">到底了</u-divider>

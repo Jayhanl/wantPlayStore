@@ -91,7 +91,7 @@ var render = function() {
   var l0 = _vm.__map(_vm.infoList, function(item, __i0__) {
     var $orig = _vm.__get_orig(item)
 
-    var f0 = _vm._f("fomatTime")(item.createTime)
+    var f0 = _vm._f("timeFrom")(item.createTime)
 
     return {
       $orig: $orig,

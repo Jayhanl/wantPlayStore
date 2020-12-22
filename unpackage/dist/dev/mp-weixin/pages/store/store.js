@@ -244,7 +244,7 @@ var _default =
       bannerList: [],
       info: '',
       store: '',
-      current: 0,
+      current: 1,
       list: [
       {
         name: '图片管理' },
@@ -269,7 +269,8 @@ var _default =
     //前往编辑商家信息
     goEdit: function goEdit() {
       this.$Router.push({
-        path: '/pages/shop/edit' });
+        name: 'store_edit',
+        params: { name: this.store.merchName } });
 
     },
     chooseBanner: function chooseBanner(ists, name) {

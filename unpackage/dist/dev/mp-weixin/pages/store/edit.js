@@ -100,6 +100,15 @@ var components = {
   uInput: function() {
     return Promise.all(/*! import() | uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-input/u-input.vue */ 205))
   },
+  uCheckboxGroup: function() {
+    return Promise.all(/*! import() | uview-ui/components/u-checkbox-group/u-checkbox-group */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-checkbox-group/u-checkbox-group")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-checkbox-group/u-checkbox-group.vue */ 317))
+  },
+  uCheckbox: function() {
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-checkbox/u-checkbox */ "uview-ui/components/u-checkbox/u-checkbox").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-checkbox/u-checkbox.vue */ 324))
+  },
+  uPicker: function() {
+    return Promise.all(/*! import() | uview-ui/components/u-picker/u-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-picker/u-picker")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-picker/u-picker.vue */ 333))
+  },
   uButton: function() {
     return __webpack_require__.e(/*! import() | uview-ui/components/u-button/u-button */ "uview-ui/components/u-button/u-button").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-button/u-button.vue */ 219))
   }
@@ -108,6 +117,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function(e) {
+      return (_vm.form.merchYyrq = e)
+    }
+
+    _vm.e1 = function($event) {
+      _vm.startShow = true
+    }
+
+    _vm.e2 = function(e) {
+      return (_vm.form.merchYysjStart = e.hour + ":" + e.minute)
+    }
+
+    _vm.e3 = function($event) {
+      _vm.endShow = true
+    }
+
+    _vm.e4 = function(e) {
+      return (_vm.form.merchYysjEnd = e.hour + ":" + e.minute)
+    }
+
+    _vm.e5 = function(e) {
+      return (_vm.form.merchLabel = e)
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -141,7 +175,26 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -160,45 +213,181 @@ var _default =
 {
   data: function data() {
     return {
-      form: {
-        name: '',
-        intro: '' },
+      startShow: false,
+      endShow: false,
+      params: {
+        year: false,
+        month: false,
+        day: false,
+        hour: true,
+        minute: true },
 
+      form: {
+        merchName: '',
+        merchYyrq: '',
+        merchYysjStart: '',
+        merchYysjEnd: '',
+        merchDesc: '',
+        merchCpp: '',
+        merchMobile: '',
+        merchAddr: '',
+        merchLabel: '' },
+
+      dayList: [
+      { checked: false, text: '周一' },
+      { checked: false, text: '周二' },
+      { checked: false, text: '周三' },
+      { checked: false, text: '周四' },
+      { checked: false, text: '周五' },
+      { checked: false, text: '周六' },
+      { checked: false, text: '周日' }],
+
+      labelList: [],
       rules: {
-        name: [
+        merchDesc: [
         {
           required: true,
-          message: '请输入姓名',
-          // 可以单个或者同时写两个触发验证方式
-          trigger: ['change', 'blur'] }],
+          message: '请输入商铺名',
+          trigger: 'blur' }],
 
 
-        intro: [
+        merchCpp: [
         {
-          min: 5,
-          message: '简介不能少于5个字',
+          required: true,
+          message: '请输入人均消费',
+          trigger: 'blur' }],
+
+
+        merchYyrq: [
+        {
+          required: true,
+          type: 'array',
+          message: '请选择营业日',
+          trigger: 'change' }],
+
+
+        merchYysjStart: [
+        {
+          required: true,
+          type: 'string',
+          message: '请选择营业开始时间',
+          trigger: 'change' }],
+
+
+        merchYysjEnd: [
+        {
+          required: true,
+          type: 'string',
+          message: '请选择营业结束时间',
+          trigger: 'change' }],
+
+
+        merchMobile: [
+        {
+          required: true,
+          message: '请输入商铺联系方式',
+          trigger: 'blur' }],
+
+
+        // merchAddr: [
+        // 	{
+        // 		required: true,
+        // 		message: '请输入商铺联系地址',
+        // 		trigger: 'blur'
+        // 	}
+        // ],
+        merchLabel: [
+        {
+          required: true,
+          type: 'array',
+          message: '请选择商铺标签',
           trigger: 'change' }] } };
 
 
 
 
   },
+  onLoad: function onLoad() {
+    this.getData();
+    this.form.merchName = this.$Route.query.name;
+  },
+  onReady: function onReady() {
+    this.$refs.uForm.setRules(this.rules);
+  },
   methods: {
-    submit: function submit(e) {
+    //获取商家主营分类
+    getData: function getData() {var _this = this;
+      this.$api('data.merch_label').then(function (res) {
+        console.log(res.data);
+        _this.labelList = res.data.map(function (item) {
+          item.checked = false;
+          return item;
+        });
+      });
+    },
+    //选择位置
+    selectAddr: function selectAddr() {
+      var that = this;
+
+      uni.getSetting({
+        success: function success(res) {
+          if (!res.authSetting['scope.userLocation']) {
+            uni.authorize({
+              scope: 'scope.userLocation',
+              success: function success() {
+                that.chooseLocation();
+                return;
+              } });
+
+          } else {
+            that.chooseLocation();
+            return;
+          }
+        } });
+
+
+
+
+
+    },
+    chooseLocation: function chooseLocation() {
+      var that = this;
+      uni.chooseLocation({
+        geocode: true,
+        success: function success(res) {
+          console.log(res);
+          that.form.merchAddr = res.address;
+        } });
+
+    },
+    //修改信息
+    submit: function submit(e) {var _this2 = this;
       console.log(e);
+      var formD = this.form;
       this.$refs.uForm.validate(function (valid) {
         if (valid) {
           console.log('验证通过');
-        } else {
-          console.log('验证失败');
+          console.log(parseInt(formD.merchYysjStart.replace(':', '')));
+          _this2.$api('store.update_info', {
+            merchDesc: formD.merchDesc,
+            merchCpp: formD.merchCpp,
+            merchMobile: formD.merchMobile,
+            merchYyrq: formD.merchYyrq,
+            merchYysjStart: parseInt(formD.merchYysjStart.replace(':', '')),
+            merchYysjEnd: parseInt(formD.merchYysjEnd.replace(':', '')),
+            merchAddr: formD.merchAddr,
+            merchLabel: formD.merchLabel }).
+          then(function (res) {
+            uni.showToast({
+              title: '修改成功' });
+
+            uni.setTimeout(_this2.$Router.back(1), 1500);
+
+          });
         }
       });
-    } },
-
-  // 必须要在onReady生命周期，因为onLoad生命周期组件可能尚未创建完毕
-  onReady: function onReady() {
-    this.$refs.uForm.setRules(this.rules);
-  } };exports.default = _default;
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 
