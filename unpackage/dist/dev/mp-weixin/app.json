@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/login/login",
+    "pages/login/code",
+    "pages/login/enter",
+    "pages/store/store",
+    "pages/store/edit",
+    "pages/user/user",
+    "pages/order/order"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#C0C4CC",
+    "selectedColor": "#FFC107",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "height": "55px",
+    "fontSize": "12px",
+    "iconWidth": "28px",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home-on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/store/store",
+        "iconPath": "static/tabbar/dynamic.png",
+        "selectedIconPath": "static/tabbar/dynamic-on.png",
+        "text": "动态"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "iconPath": "static/tabbar/message.png",
+        "selectedIconPath": "static/tabbar/message-on.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "static/tabbar/user.png",
+        "selectedIconPath": "static/tabbar/user-on.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取用户当前位置"
+    }
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap57.json"
+}

@@ -1,0 +1,125 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/home",
+			"name": "home",
+			"aliasPath": "/",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": true
+			},
+			"meta": {
+				"auth": false
+			}
+		}, {
+			"path": "pages/login/login",
+			"name": "login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			},
+			"meta": {
+				"auth": false
+			}
+		}, {
+			"path": "pages/login/code",
+			"name": "code",
+			"style": {
+				"navigationBarTitleText": "登录获取验证码"
+			},
+			"meta": {
+				"auth": false
+			}
+		}, {
+			"path": "pages/login/enter",
+			"name": "enter",
+			"style": {
+				"navigationBarTitleText": "商家入驻"
+			},
+			"meta": {
+				"auth": false
+			}
+		}, {
+			"path": "pages/store/store",
+			"name": "store",
+			"style": {
+				"navigationBarTitleText": "店铺管理"
+			},
+			"meta": {
+				"auth": false
+			}
+		}, {
+			"path": "pages/store/edit",
+			"name": "store_edit",
+			"style": {
+				"navigationBarTitleText": "店铺信息"
+			},
+			"meta": {
+				"auth": false
+			}
+		}, {
+			"path": "pages/user/user",
+			"name": "user",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": false
+			},
+			"meta": {
+				"auth": false
+			}
+
+		}, {
+			"path": "pages/order/order",
+			"style": {
+				"navigationBarTitleText": "订单",
+				"enablePullDownRefresh": false
+			},
+			"meta": {
+				"auth": true
+			}
+
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#C0C4CC",
+		"selectedColor": "#FFC107",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"height": "55px",
+		"fontSize": "12px",
+		"iconWidth": "28px",
+		"list": [{
+				"pagePath": "pages/home/home",
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/home-on.png",
+				"text": "首页"
+			}, {
+				"pagePath": "pages/store/store",
+				"iconPath": "static/tabbar/dynamic.png",
+				"selectedIconPath": "static/tabbar/dynamic-on.png",
+				"text": "动态"
+			},
+			{
+				"pagePath": "pages/order/order",
+				"iconPath": "static/tabbar/message.png",
+				"selectedIconPath": "static/tabbar/message-on.png",
+				"text": "消息"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"iconPath": "static/tabbar/user.png",
+				"selectedIconPath": "static/tabbar/user-on.png",
+				"text": "我的"
+			}
+		]
+	}
+}
