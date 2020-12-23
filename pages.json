@@ -43,10 +43,10 @@
 				"auth": false
 			}
 		}, {
-			"path": "pages/store/store",
-			"name": "store",
+			"path": "pages/active/active",
+			"name": "active",
 			"style": {
-				"navigationBarTitleText": "店铺管理"
+				"navigationBarTitleText": "商家动态"
 			},
 			"meta": {
 				"auth": false
@@ -56,6 +56,15 @@
 			"name": "store_edit",
 			"style": {
 				"navigationBarTitleText": "店铺信息"
+			},
+			"meta": {
+				"auth": false
+			}
+		},  {
+			"path": "pages/store/tgw",
+			"name": "store_tgw",
+			"style": {
+				"navigationBarTitleText": "开放推广"
 			},
 			"meta": {
 				"auth": false
@@ -103,7 +112,7 @@
 				"selectedIconPath": "static/tabbar/home-on.png",
 				"text": "首页"
 			}, {
-				"pagePath": "pages/store/store",
+				"pagePath": "pages/active/active",
 				"iconPath": "static/tabbar/dynamic.png",
 				"selectedIconPath": "static/tabbar/dynamic-on.png",
 				"text": "动态"

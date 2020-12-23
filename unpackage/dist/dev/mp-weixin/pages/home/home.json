@@ -5,6 +5,8 @@
     "u-swiper": "/uview-ui/components/u-swiper/u-swiper",
     "u-grid": "/uview-ui/components/u-grid/u-grid",
     "u-grid-item": "/uview-ui/components/u-grid-item/u-grid-item",
-    "info": "/components/info/info"
+    "info": "/components/info/info",
+    "u-empty": "/uview-ui/components/u-empty/u-empty",
+    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore"
   }
 }

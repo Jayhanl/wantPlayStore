@@ -14,7 +14,9 @@
 		<!-- 热点资讯 info -->
 		<view class="info">
 			<text class="info-title">热点资讯</text>
-			<info :infoList="infoList" :dataNull="dataNull" />
+			<info :dataList="dataList" />
+			<u-empty :show="dataList.length===0&&dataStatus==='nomore'" mode="list"></u-empty>
+			<u-loadmore :status="dataStatus" @loadmore="getMore" />
 		</view>
 	</view>
 </template>
@@ -25,9 +27,9 @@ export default {
 		return {
 			page: 1,
 			limit: 10,
-			dataNull: false,
+			dataStatus:'loadmore',
 			bannerList: [],
-			infoList: [],
+			dataList: [],
 			categoryList: [
 				// 分类菜单
 				{ id: 1, name: '店铺管理', img: '/static/category/1.png', url: '/pages/shop/shop' },
@@ -46,10 +48,7 @@ export default {
 		this.getList('reload');
 	},
 	onReachBottom() {
-		console.log('加载下一页');
-		if (this.dataNull) return;
-		this.page += 1;
-		this.getList('more');
+		this.getMore()
 	},
 	methods: {
 		//分类跳转页面
@@ -71,6 +70,7 @@ export default {
 		},
 		//获取首页数据
 		getList(load) {
+			this.dataStatus = 'loading' 
 			this.$api('data.homepage', {
 				page: this.page,
 				limit: this.limit
@@ -83,16 +83,22 @@ export default {
 					});
 				}
 				if(res.data.banner) this.bannerList = res.data.banner;
-				let infoList = res.data.info;
-				if (infoList.length === 0) {
-					this.dataNull = this.page === 1 ? false : true;
-					this.infoList = this.page === 1 ? [] : this.infoList;
+				let resD = res.data.info;
+				if (resD.length === 0) {
+					this.dataStatus = 'nomore'
+					this.dataList = this.page === 1 ? [] : this.resD;
 					return;
 				}
-				this.infoList = load === 'more' ? this.infoList.concat(infoList) : infoList;
-				this.dataNull = infoList.length === this.limit ? false : true;
+				this.dataList = load === 'more' ? this.resD.concat(resD) : resD;
+				this.dataStatus = resD.length === this.limit ? 'loadmore' : 'nomore';
 			});
-		}
+		},
+		//加载下一页
+		getMore(){
+			if (this.dataStatus==='nomore') return;
+			this.page += 1;
+			this.getList('more');
+		},
 	}
 };
 </script>

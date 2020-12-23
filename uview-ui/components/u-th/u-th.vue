@@ -54,7 +54,8 @@
 		flex-direction: column;
 		flex: 1;
 		justify-content: center;
-		font-size: 28rpx;
+		font-size: 24rpx;
+		width: auto;
 		color: $u-main-color;
 		font-weight: bold;
 		background-color: rgb(245, 246, 248);

@@ -1,7 +1,7 @@
 <template>
 	<view>
 		
-		<view v-for="item in infoList" :key="item.infoId" class="info-item">
+		<view v-for="item in dataList" :key="item.infoId" class="info-item">
 			<u-image
 				:src="item.surfaceImg"
 				width="150"
@@ -20,7 +20,7 @@
 				<text class="u-tips-color u-font-24">{{item.createTime | timeFrom}}</text>
 			</view>
 		</view>
-		<u-divider v-show="dataNull" margin-top="20" color="" half-width="200">到底了</u-divider>
+		<!-- <u-divider v-show="dataNull" margin-top="20" color="" half-width="200">到底了</u-divider> -->
 	</view>
 </template>
 
@@ -35,8 +35,7 @@ export default {
 		}
 	},
 	props: {
-		infoList: Array,
-		dataNull: Boolean
+		dataList: Array
 	}
 };
 </script>

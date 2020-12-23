@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "店铺管理",
-  "usingComponents": {
-    "u-subsection": "/uview-ui/components/u-subsection/u-subsection",
-    "u-button": "/uview-ui/components/u-button/u-button",
-    "u-upload": "/uview-ui/components/u-upload/u-upload"
-  }
-}

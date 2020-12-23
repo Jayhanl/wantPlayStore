@@ -54,6 +54,26 @@ export default {
 			method: 'GET',
 		},
 	},
+	
+	/** 动态模块 ↓ **/
+	info: {
+		list: {//列表数据
+			url: 'info/list',
+			auth: false,
+			method: 'GET',
+			loading: true,
+		},
+		create: {//创建
+			url: 'info/create',
+			auth: false,
+			method: 'GET',
+		},
+		'delete': {//删除
+			url: 'info/delete',
+			auth: false,
+			method: 'DELETE',
+		},
+	},
 
 	/** 商家模块 ↓ **/
 	store: {
@@ -129,7 +149,7 @@ export default {
 			method: 'PUT',
 			loading: true,
 		},
-		allow_tgwtg: {//允许邀请
+		allow_tgwtg: {//接受邀请
 			url: 'store/allow_tgwtg',
 			auth: false,
 			method: 'PUT',

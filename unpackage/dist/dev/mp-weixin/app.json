@@ -4,8 +4,9 @@
     "pages/login/login",
     "pages/login/code",
     "pages/login/enter",
-    "pages/store/store",
+    "pages/active/active",
     "pages/store/edit",
+    "pages/store/tgw",
     "pages/user/user",
     "pages/order/order"
   ],
@@ -32,7 +33,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/store/store",
+        "pagePath": "pages/active/active",
         "iconPath": "static/tabbar/dynamic.png",
         "selectedIconPath": "static/tabbar/dynamic-on.png",
         "text": "动态"
