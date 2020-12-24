@@ -5,6 +5,10 @@
     "pages/login/code",
     "pages/login/enter",
     "pages/active/active",
+    "pages/active/detail",
+    "pages/active/create",
+    "pages/active/vote",
+    "pages/store/store",
     "pages/store/edit",
     "pages/store/tgw",
     "pages/user/user",
@@ -57,5 +61,6 @@
       "desc": "获取用户当前位置"
     }
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap79.json"
 }

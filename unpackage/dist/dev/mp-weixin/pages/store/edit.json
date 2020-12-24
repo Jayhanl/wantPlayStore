@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "店铺信息",
+  "navigationBarTitleText": "编辑店铺信息",
   "usingComponents": {
     "u-form": "/uview-ui/components/u-form/u-form",
     "u-form-item": "/uview-ui/components/u-form-item/u-form-item",

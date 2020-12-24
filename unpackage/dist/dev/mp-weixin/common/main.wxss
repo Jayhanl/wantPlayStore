@@ -11,10 +11,39 @@
  *
  * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
  */
+@font-face {
+	font-family: "custom-icon";
+	src: url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAMAAAsAAAAAB0gAAAKyAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcAqCMIIJATYCJAMICwYABCAFhREHLhtRBhHVk1lkPw9styk7ODZaKWxsRJjE9nTPgyey+3rVXaOe1exf8ORoGR3AiE6lUEYQ2hEVD2PAiU+87Txbvrn51RgVYZiS83w/LfMFdnpp+kcATH+/0v82sMHqAS3ZmnW0UI4nWORFjt8s4d34HQCfguyOIC36YwjgaEA7pFuPfsMIUZxjAsjMaVPGEZY8KCrFQwQfPKjIOjxCs9zcdrA2/n756qokBINncYoGTe4+kU4f4ibZpelSRoYI3OVMgPQYWKAdoCDDoGUANo20w+KMiNIEjpUv8KEsTUMdctR/HuLj5GYBUEE5z8T1eY/6lwYABQJgPDBzUgSCgmznq+cdPr70mMu78rBBsOzkyuP4S4/HCy4/qNRd91c8bODtfTT80LES3X585clyb8eJcRBtgKWsOIZZykzsMuyhu5TbHSfan8unqklVMuuXnOZJVeOqpHledRI17f1Lbu9cXciY96QJvWnShDHT873cq7m324y8V1KVXOUsqsrMNNBgICckCIfpBEB6SLEjf/nv8PzCraljcvs/jBWA167dlpg3zAbhjVkFfjB34JCafEdrVOfChGE8wY3XORyQwh35vJ2qKHwbkxCXuBI0BDSClpiWQLFVwMO2Bz62F3S0ZejjMRkWYxGNgDasJ1Ao4iY05PAAWop4BxT7H/FwEgMf2xg6Rohe/8KYFnI3RW+YaPjTOsrFXrklE2IwOdPy8jvmePQqN2fBNzSsdJLKrADxGy7ochfCZ67MmFjlpGbmz+E4hLzKhtGyxczXec7oTtkop0voqugNEzH8iXWUi8PnLWFCDCZn2vVz7pjj0Wt3FyD0hsqSlW2HKMkohoGb5Bra9ojvCZ+5wowJ1mk2ojn0LhyHEB7v2jBaxjIh5GtydxwPlWTbys7/vQA4HKURt9yis8XgHAAA') format('woff2');
+}
+.custom-icon {
+	font-family: "custom-icon" !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.custom-icon-vote:before {
+	content: "\e61a";
+}
 .u-form-item--left__content {
   padding-right: 10px !important;
 }
 /* 颜色变量 */
+/* 返回顶部 */
+.suspend {
+  height: 80rpx;
+  width: 80rpx;
+  position: fixed;
+  bottom: 60rpx;
+  right: 30rpx;
+  padding: 20rpx;
+  text-align: center;
+  background: #fff;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 8px #eee;
+          box-shadow: 0px 0px 8px #eee;
+}
 .color-main {
   color: #f06c7a !important;
 }

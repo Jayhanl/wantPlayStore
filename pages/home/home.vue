@@ -32,10 +32,10 @@ export default {
 			dataList: [],
 			categoryList: [
 				// 分类菜单
-				{ id: 1, name: '店铺管理', img: '/static/category/1.png', url: '/pages/shop/shop' },
-				{ id: 2, name: '优惠管理', img: '/static/category/2.png' },
-				{ id: 3, name: '推广管理', img: '/static/category/3.png' },
-				{ id: 4, name: '会员管理', img: '/static/category/4.png' }
+				{ id: 1, name: '店铺管理', img: '/static/category/1.png', url: 'store' },
+				{ id: 2, name: '优惠管理', img: '/static/category/2.png', url: 'store_edit' },
+				{ id: 3, name: '推广管理', img: '/static/category/3.png',url: 'store'  },
+				{ id: 4, name: '会员管理', img: '/static/category/4.png',url:'store_tgw' }
 			]
 		};
 	},
@@ -53,11 +53,10 @@ export default {
 	methods: {
 		//分类跳转页面
 		goCategory(index) {
-			if (this.categoryList[index].url) {
-				this.$Router.push({
-					path: this.categoryList[index].url
-				});
-			}
+			console.log(this.categoryList[index].url)
+			this.$Router.push({
+				name: this.categoryList[index].url
+			});
 		},
 		//Banner跳转页面
 		goBanner(index) {

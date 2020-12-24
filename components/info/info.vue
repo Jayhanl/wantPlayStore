@@ -1,6 +1,5 @@
 <template>
 	<view>
-		
 		<view v-for="item in dataList" :key="item.infoId" class="info-item">
 			<u-image
 				:src="item.surfaceImg"
@@ -20,7 +19,6 @@
 				<text class="u-tips-color u-font-24">{{item.createTime | timeFrom}}</text>
 			</view>
 		</view>
-		<!-- <u-divider v-show="dataNull" margin-top="20" color="" half-width="200">到底了</u-divider> -->
 	</view>
 </template>
 
@@ -28,11 +26,6 @@
 export default {
 	data() {
 		return {};
-	},
-	computed:{
-		createTime:()=>{
-			
-		}
 	},
 	props: {
 		dataList: Array

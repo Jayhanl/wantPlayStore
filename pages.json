@@ -11,63 +11,67 @@
 			"style": {
 				"navigationBarTitleText": "首页",
 				"enablePullDownRefresh": true
-			},
-			"meta": {
-				"auth": false
 			}
 		}, {
 			"path": "pages/login/login",
 			"name": "login",
 			"style": {
 				"navigationBarTitleText": "登录"
-			},
-			"meta": {
-				"auth": false
 			}
 		}, {
 			"path": "pages/login/code",
 			"name": "code",
 			"style": {
 				"navigationBarTitleText": "登录获取验证码"
-			},
-			"meta": {
-				"auth": false
 			}
 		}, {
 			"path": "pages/login/enter",
 			"name": "enter",
 			"style": {
 				"navigationBarTitleText": "商家入驻"
-			},
-			"meta": {
-				"auth": false
 			}
 		}, {
 			"path": "pages/active/active",
 			"name": "active",
 			"style": {
-				"navigationBarTitleText": "商家动态"
-			},
-			"meta": {
-				"auth": false
+				"navigationBarTitleText": "商家动态",
+				"enablePullDownRefresh": true
+			}
+		}, {
+			"path": "pages/active/detail",
+			"name": "active_detail",
+			"style": {
+				"navigationBarTitleText": "动态详情"
+			}
+		}, {
+			"path": "pages/active/create",
+			"name": "active_create",
+			"style": {
+				"navigationBarTitleText": "发布动态"
+			}
+		}, {
+			"path": "pages/active/vote",
+			"name": "active_vote",
+			"style": {
+				"navigationBarTitleText": "投票详情"
+			}
+		}, {
+			"path": "pages/store/store",
+			"name": "store",
+			"style": {
+				"navigationBarTitleText": "店铺信息"
 			}
 		}, {
 			"path": "pages/store/edit",
 			"name": "store_edit",
 			"style": {
-				"navigationBarTitleText": "店铺信息"
-			},
-			"meta": {
-				"auth": false
+				"navigationBarTitleText": "编辑店铺信息"
 			}
-		},  {
+		}, {
 			"path": "pages/store/tgw",
 			"name": "store_tgw",
 			"style": {
 				"navigationBarTitleText": "开放推广"
-			},
-			"meta": {
-				"auth": false
 			}
 		}, {
 			"path": "pages/user/user",
@@ -75,9 +79,6 @@
 			"style": {
 				"navigationBarTitleText": "我的",
 				"enablePullDownRefresh": false
-			},
-			"meta": {
-				"auth": false
 			}
 
 		}, {

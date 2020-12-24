@@ -61,12 +61,18 @@ export default {
 			url: 'info/list',
 			auth: false,
 			method: 'GET',
+			loading: false,
+		},
+		detail: {//列表数据
+			url: 'info/detail',
+			auth: false,
+			method: 'GET',
 			loading: true,
 		},
 		create: {//创建
 			url: 'info/create',
 			auth: false,
-			method: 'GET',
+			method: 'POST',
 		},
 		'delete': {//删除
 			url: 'info/delete',
