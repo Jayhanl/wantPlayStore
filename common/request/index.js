@@ -30,9 +30,11 @@ export default function api(url, data = {}, loading = false) {
 	});
 
 	request.interceptor.response((response) => { /* 请求之后拦截器 */
-		uni.hideLoading()
+		uni.hideLoading() //停止加载
+		uni.hideNavigationBarLoading() //完成停止加载
+		uni.stopPullDownRefresh() //停止下拉刷新
 		let resData = response.data
-		if (resData.data.errCode === 40001) { // 服务端返回的状态码不等于200，则reject()
+		if (response.statusCode === 401) { // 服务端返回的状态码不等于200，则reject()
 			uni.showToast({
 				title: resData.data.errMsg || '请求出错,稍后重试',
 				icon: 'none',
@@ -40,8 +42,8 @@ export default function api(url, data = {}, loading = false) {
 				mask: true
 			});
 			//401代表token失效
-			tools.wxLogin()
 			store.commit('OUT_LOGIN');
+			tools.wxLogin()
 		}
 		if (response.statusCode !== 200) { // 服务端返回的状态码不等于200，则reject()
 			uni.showToast({
@@ -57,7 +59,9 @@ export default function api(url, data = {}, loading = false) {
 		return response
 	}, (response) => { // 预留可以日志上报
 		console.log('出错了', response)
-		uni.hideLoading()
+		uni.hideLoading() //停止加载
+		uni.hideNavigationBarLoading() //完成停止加载
+		uni.stopPullDownRefresh() //停止下拉刷新
 		uni.showToast({
 			title: response.data.data.errMsg || '请求出错,稍后重试',
 			icon: 'none',

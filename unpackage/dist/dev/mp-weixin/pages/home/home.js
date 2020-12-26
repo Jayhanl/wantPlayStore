@@ -94,22 +94,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uSwiper: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-swiper/u-swiper */ "uview-ui/components/u-swiper/u-swiper").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-swiper/u-swiper.vue */ 177))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-swiper/u-swiper */ "uview-ui/components/u-swiper/u-swiper").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-swiper/u-swiper.vue */ 223))
   },
   uGrid: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-grid/u-grid */ "uview-ui/components/u-grid/u-grid").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-grid/u-grid.vue */ 184))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-grid/u-grid */ "uview-ui/components/u-grid/u-grid").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-grid/u-grid.vue */ 230))
   },
   uGridItem: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-grid-item/u-grid-item */ "uview-ui/components/u-grid-item/u-grid-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-grid-item/u-grid-item.vue */ 191))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-grid-item/u-grid-item */ "uview-ui/components/u-grid-item/u-grid-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-grid-item/u-grid-item.vue */ 237))
   },
   info: function() {
-    return __webpack_require__.e(/*! import() | components/info/info */ "components/info/info").then(__webpack_require__.bind(null, /*! @/components/info/info.vue */ 198))
+    return __webpack_require__.e(/*! import() | components/info/info */ "components/info/info").then(__webpack_require__.bind(null, /*! @/components/info/info.vue */ 244))
   },
   uEmpty: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-empty/u-empty */ "uview-ui/components/u-empty/u-empty").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-empty/u-empty.vue */ 205))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-empty/u-empty */ "uview-ui/components/u-empty/u-empty").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-empty/u-empty.vue */ 251))
   },
   uLoadmore: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-loadmore/u-loadmore */ "uview-ui/components/u-loadmore/u-loadmore").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-loadmore/u-loadmore.vue */ 212))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-loadmore/u-loadmore */ "uview-ui/components/u-loadmore/u-loadmore").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-loadmore/u-loadmore.vue */ 258))
   }
 }
 var render = function() {
@@ -185,7 +185,7 @@ var _default =
       // 分类菜单
       { id: 1, name: '店铺管理', img: '/static/category/1.png', url: 'store' },
       { id: 2, name: '优惠管理', img: '/static/category/2.png', url: 'store_edit' },
-      { id: 3, name: '推广管理', img: '/static/category/3.png', url: 'store' },
+      { id: 3, name: '推广管理', img: '/static/category/3.png', url: 'promote' },
       { id: 4, name: '会员管理', img: '/static/category/4.png', url: 'store_tgw' }] };
 
 
@@ -194,9 +194,7 @@ var _default =
     this.getList();
   },
   onPullDownRefresh: function onPullDownRefresh() {
-    uni.showNavigationBarLoading(); //在标题栏中显示加载
-    this.page = 1;
-    this.getList('reload');
+    this.getList('reload', '刷新成功');
   },
   onReachBottom: function onReachBottom() {
     this.getMore();
@@ -219,29 +217,28 @@ var _default =
       }
     },
     //获取首页数据
-    getList: function getList(load) {var _this = this;
+    getList: function getList(load, msg) {var _this = this;
+      if (load === 'reload') this.page = 1;
       this.dataStatus = 'loading';
       this.$api('data.homepage', {
         page: this.page,
         limit: this.limit }).
       then(function (res) {
-        if (load === 'reload') {
-          uni.hideNavigationBarLoading();
-          uni.stopPullDownRefresh(); //停止下拉刷新
+        if (msg) {
           uni.showToast({
-            title: '刷新成功' });
+            title: msg });
 
         }
         if (res.data.banner) _this.bannerList = res.data.banner;
         var resD = res.data.info;
         if (resD.length === 0) {
           _this.dataStatus = 'nomore';
-          _this.dataList = _this.page === 1 ? [] : _this.resD;
+          _this.dataList = _this.page === 1 ? [] : _this.dataList;
           return;
         }
-        _this.dataList = load === 'more' ? _this.resD.concat(resD) : resD;
+        _this.dataList = load === 'more' ? _this.dataList.concat(resD) : resD;
         _this.dataStatus = resD.length === _this.limit ? 'loadmore' : 'nomore';
-      });
+      }).catch(function () {return _this.dataStatus = 'loadmore';});
     },
     //加载下一页
     getMore: function getMore() {

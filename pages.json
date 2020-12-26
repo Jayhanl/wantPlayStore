@@ -56,6 +56,18 @@
 				"navigationBarTitleText": "投票详情"
 			}
 		}, {
+			"path": "pages/msg/msg",
+			"name": "msg",
+			"style": {
+				"navigationBarTitleText": "消息列表"
+			}
+		}, {
+			"path": "pages/msg/chat",
+			"name": "msg_chat",
+			"style": {
+				"navigationBarTitleText": "聊天室"
+			}
+		}, {
 			"path": "pages/store/store",
 			"name": "store",
 			"style": {
@@ -72,6 +84,33 @@
 			"name": "store_tgw",
 			"style": {
 				"navigationBarTitleText": "开放推广"
+			}
+		}, {
+			"path": "pages/promote/promote",
+			"name": "promote",
+			"style": {
+				"navigationBarTitleText": "推广管理",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/promote/create_flow",
+			"name": "promote_create_flow",
+			"style": {
+				"navigationBarTitleText": "发布流量推广"
+			}
+		}, {
+			"path": "pages/promote/history",
+			"name": "promote_history",
+			"style": {
+				"navigationBarTitleText": "推广历史",
+				"enablePullDownRefresh": true
+			}
+		}, {
+			"path": "pages/promote/history_detail",
+			"name": "promote_history_detail",
+			"style": {
+				"navigationBarTitleText": "推广历史详情",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/user/user",
@@ -119,7 +158,7 @@
 				"text": "动态"
 			},
 			{
-				"pagePath": "pages/order/order",
+				"pagePath": "pages/msg/msg",
 				"iconPath": "static/tabbar/message.png",
 				"selectedIconPath": "static/tabbar/message-on.png",
 				"text": "消息"

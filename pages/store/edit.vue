@@ -204,7 +204,7 @@ export default {
 						uni.showToast({
 							title:'修改成功'
 						})
-						uni.setTimeout(this.$Router.back(1),1500)
+						setTimeout(()=>this.$Router.back(1),1500)
 						
 					})
 				}

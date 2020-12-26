@@ -81,6 +81,26 @@ export default {
 		},
 	},
 
+	/** 消息模块 ↓ **/
+	session: {
+		session_list: {//消息列表数据
+			url: 'session/session_list',
+			auth: false,
+			method: 'GET',
+			loading: true,
+		},
+		msg_list: {//对话内容
+			url: 'session/msg_list',
+			auth: false,
+			method: 'GET',
+		},
+		send_msg: {//发送消息
+			url: 'session/send_msg',
+			auth: false,
+			method: 'POST',
+		},
+	},
+	
 	/** 商家模块 ↓ **/
 	store: {
 		data: {//获取店铺信息
@@ -166,6 +186,83 @@ export default {
 			auth: false,
 			method: 'PUT',
 			loading: true,
+		},
+	},
+	
+	/** 平台推广 ↓ **/
+	pttg: {
+		homepage: {//首页推广位申请
+			url: 'pttg/homepage',
+			auth: false,
+			method: 'POST',
+			loading: true,
+		},
+		picked: {//精选商家申请
+			url: 'pttg/picked',
+			auth: false,
+			method: 'POST',
+		},
+		round_top: {//周边商家置顶
+			url: 'pttg/round_top',
+			auth: false,
+			method: 'POST',
+		},
+	},
+	
+	/** 流量推广 ↓ **/
+	lltg: {
+		doing_ist: {//推广中列表
+			url: 'lltg/doing_list',
+			auth: false,
+			method: 'GET',
+		},
+		done_list: {//推广历史列表
+			url: 'lltg/done_list',
+			auth: false,
+			method: 'GET',
+		},
+		detail: {//推广历史详情
+			url: 'lltg/detail',
+			auth: false,
+			method: 'GET',
+		},
+		create: {//创建
+			url: 'lltg/create',
+			auth: false,
+			method: 'POST',
+			loading: true,
+		},
+		update: {//更新，是否开放
+			url: 'lltg/update',
+			auth: false,
+			method: 'PUT',
+			loading: true,
+		},
+		stop: {//终止推广
+			url: 'lltg/stop',
+			auth: false,
+			method: 'PUT',
+			loading: true,
+		},
+		invite: {//邀请商家
+			url: 'lltg/invite',
+			auth: false,
+			method: 'POST',
+			loading: true,
+		},
+	},
+	
+	/** 会员管理 ↓ **/
+	member: {
+		fans_list: {//关注列表
+			url: 'lltg/fans_list',
+			auth: false,
+			method: 'GET',
+		},
+		today_list: {//今日顾客列表
+			url: 'lltg/today_list',
+			auth: false,
+			method: 'GET',
 		},
 	},
 

@@ -34,7 +34,7 @@ export default {
 				// 分类菜单
 				{ id: 1, name: '店铺管理', img: '/static/category/1.png', url: 'store' },
 				{ id: 2, name: '优惠管理', img: '/static/category/2.png', url: 'store_edit' },
-				{ id: 3, name: '推广管理', img: '/static/category/3.png',url: 'store'  },
+				{ id: 3, name: '推广管理', img: '/static/category/3.png',url: 'promote'  },
 				{ id: 4, name: '会员管理', img: '/static/category/4.png',url:'store_tgw' }
 			]
 		};
@@ -43,9 +43,7 @@ export default {
 		this.getList();
 	},
 	onPullDownRefresh() {
-		uni.showNavigationBarLoading(); //在标题栏中显示加载
-		this.page = 1;
-		this.getList('reload');
+		this.getList('reload','刷新成功');
 	},
 	onReachBottom() {
 		this.getMore()
@@ -68,29 +66,28 @@ export default {
 			}
 		},
 		//获取首页数据
-		getList(load) {
+		getList(load,msg) {
+			if(load==='reload') this.page = 1
 			this.dataStatus = 'loading' 
 			this.$api('data.homepage', {
 				page: this.page,
 				limit: this.limit
 			}).then(res => {
-				if (load === 'reload') {
-					uni.hideNavigationBarLoading();
-					uni.stopPullDownRefresh(); //停止下拉刷新
+				if (msg) {
 					uni.showToast({
-						title: '刷新成功'
+						title: msg
 					});
 				}
 				if(res.data.banner) this.bannerList = res.data.banner;
 				let resD = res.data.info;
 				if (resD.length === 0) {
 					this.dataStatus = 'nomore'
-					this.dataList = this.page === 1 ? [] : this.resD;
+					this.dataList = this.page === 1 ? [] : this.dataList;
 					return;
 				}
-				this.dataList = load === 'more' ? this.resD.concat(resD) : resD;
+				this.dataList = load === 'more' ? this.dataList.concat(resD) : resD;
 				this.dataStatus = resD.length === this.limit ? 'loadmore' : 'nomore';
-			});
+			}).catch(()=>this.dataStatus = 'loadmore')
 		},
 		//加载下一页
 		getMore(){

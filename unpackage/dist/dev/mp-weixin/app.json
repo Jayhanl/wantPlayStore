@@ -8,9 +8,15 @@
     "pages/active/detail",
     "pages/active/create",
     "pages/active/vote",
+    "pages/msg/msg",
+    "pages/msg/chat",
     "pages/store/store",
     "pages/store/edit",
     "pages/store/tgw",
+    "pages/promote/promote",
+    "pages/promote/create_flow",
+    "pages/promote/history",
+    "pages/promote/history_detail",
     "pages/user/user",
     "pages/order/order"
   ],
@@ -43,7 +49,7 @@
         "text": "动态"
       },
       {
-        "pagePath": "pages/order/order",
+        "pagePath": "pages/msg/msg",
         "iconPath": "static/tabbar/message.png",
         "selectedIconPath": "static/tabbar/message-on.png",
         "text": "消息"
@@ -61,6 +67,5 @@
       "desc": "获取用户当前位置"
     }
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap79.json"
+  "usingComponents": {}
 }

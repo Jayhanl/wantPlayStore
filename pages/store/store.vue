@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<u-subsection :list="list" :current="current" @change="e => (this.current = e)" style="width: 100%;" active-color="#F06C7A"></u-subsection>
+		<u-subsection :list="list" :current="current" @change="changeCurrent" style="width: 100%;" active-color="#F06C7A"></u-subsection>
 		<!-- 图片管理 -->
 		<view v-if="current === 0">
 			<view class="shop-title">店铺Logo管理</view>
@@ -135,9 +135,8 @@ export default {
 			},
 			storeLogo: [],
 			bannerList: [],
-			info: '',
 			store: '',
-			current: 2,
+			current: 0,
 			list: [
 				{
 					name: '图片管理'
@@ -156,11 +155,18 @@ export default {
 		};
 	},
 	onLoad() {
-		this.getData();
-		this.getList();
+		
 	},
-	onShow() {},
+	onShow() {
+		if (this.current === 0) this.getData();
+		else if (this.current === 2) this.getList('reload');
+	},
 	methods: {
+		// 切换分类
+		changeCurrent(e) {
+			if (e === 2 && this.dataList.length === 0) this.getList();
+			this.current = e;
+		},
 		//前往编辑商家信息
 		goEdit() {
 			this.$Router.push({
@@ -248,13 +254,15 @@ export default {
 		},
 		//获取商家数据
 		getData() {
-			this.$api('store.data').then(res => {
+			this.$api('store.data',{
+				bannerList:true,
+				store:true
+			}).then(res => {
 				console.log(res);
 				this.bannerList = res.data.bannerList.map(item => {
 					item.url = item.imageSrc;
 					return [item];
 				});
-				this.info = res.data.info;
 				this.store = res.data.store;
 				if (res.data.store.merchLogo) {
 					this.storeLogo = [{ url: res.data.store.merchLogo }];
@@ -263,28 +271,30 @@ export default {
 		},
 		//获取推广位数据
 		getList(load, msg) {
-			this.$api('store.tgw_list').then(res => {
+			if(load==='reload') this.page = 1
+			this.dataStatus = 'loading' 
+			this.$api('store.tgw_list',{
+				page: this.page,
+				limit: this.limit
+			}).then(res => {
 				if (load === 'reload') {
 					uni.hideNavigationBarLoading();
 					uni.stopPullDownRefresh(); //停止下拉刷新
-					uni.showToast({
-						title: msg || '刷新成功'
-					});
 				}
 				if (msg) {
 					uni.showToast({
-						title: msg || '刷新成功'
+						title: msg
 					});
 				}
 				let resD = res.data;
 				if (resD.length === 0) {
 					this.dataStatus = 'nomore';
-					this.dataList = this.page === 1 ? [] : this.resD;
+					this.dataList = this.page === 1 ? [] : this.dataList;
 					return;
 				}
-				this.dataList = load === 'more' ? this.resD.concat(resD) : resD;
+				this.dataList = load === 'more' ? this.dataList.concat(resD) : resD;
 				this.dataStatus = resD.length === this.limit ? 'loadmore' : 'nomore';
-			});
+			}).catch(()=>this.dataStatus = 'loadmore')
 		},
 		//加载下一页
 		getMore() {
@@ -331,9 +341,6 @@ export default {
 	.u-td {
 		height: auto;
 		width: calc(100% / 7);
-	}
-	.u-size-mini {
-		padding: 0 10rpx;
 	}
 	.business {
 		position: fixed;

@@ -107,10 +107,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uMessageInput: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-message-input/u-message-input */ "uview-ui/components/u-message-input/u-message-input").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-message-input/u-message-input.vue */ 233))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-message-input/u-message-input */ "uview-ui/components/u-message-input/u-message-input").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-message-input/u-message-input.vue */ 279))
   },
   uToast: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-toast/u-toast */ "uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-toast/u-toast.vue */ 226))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-toast/u-toast */ "uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-toast/u-toast.vue */ 272))
   }
 }
 var render = function() {
