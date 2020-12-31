@@ -59,7 +59,8 @@
 			"path": "pages/msg/msg",
 			"name": "msg",
 			"style": {
-				"navigationBarTitleText": "消息列表"
+				"navigationBarTitleText": "消息列表",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/msg/chat",
@@ -71,7 +72,8 @@
 			"path": "pages/store/store",
 			"name": "store",
 			"style": {
-				"navigationBarTitleText": "店铺信息"
+				"navigationBarTitleText": "店铺管理",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/store/edit",
@@ -90,13 +92,19 @@
 			"name": "promote",
 			"style": {
 				"navigationBarTitleText": "推广管理",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/promote/create_flow",
 			"name": "promote_create_flow",
 			"style": {
 				"navigationBarTitleText": "发布流量推广"
+			}
+		}, {
+			"path": "pages/promote/merch",
+			"name": "promote_merch",
+			"style": {
+				"navigationBarTitleText": "邀请商家"
 			}
 		}, {
 			"path": "pages/promote/history",
@@ -113,13 +121,53 @@
 				"enablePullDownRefresh": true
 			}
 		}, {
+			"path": "pages/discounts/discounts",
+			"name": "discounts",
+			"style": {
+				"backgroundColor": "#007AFF",
+				"navigationBarTitleText": "优惠管理",
+				"enablePullDownRefresh": true
+			}
+		},  {
+			"path": "pages/member/member",
+			"name": "member",
+			"style": {
+				"navigationBarTitleText": "会员管理",
+				"enablePullDownRefresh": true
+			}
+		},  {
 			"path": "pages/user/user",
 			"name": "user",
 			"style": {
+				"navigationBarBackgroundColor": "#f06c7a",
+				"navigationBarTextStyle": "white",
 				"navigationBarTitleText": "我的",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true
 			}
-
+		},  {
+			"path": "pages/user/wallet",
+			"name": "user_wallet",
+			"style": {
+				"navigationBarBackgroundColor": "#3998EA",
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "我的钱包",
+				"enablePullDownRefresh": true
+			}
+		}, {
+			"path": "pages/user/withdrawal",
+			"name": "user_withdraw",
+			"style": {
+				"navigationBarTitleText": "提现"
+			}
+		}, {
+			"path": "pages/user/withdrawal_list",
+			"name": "user_withdrawal_list",
+			"style": {
+				"navigationBarBackgroundColor": "#3998EA",
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "提现记录",
+				"enablePullDownRefresh": true
+			}
 		}, {
 			"path": "pages/order/order",
 			"style": {
@@ -135,7 +183,7 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor": "#FFF",
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {

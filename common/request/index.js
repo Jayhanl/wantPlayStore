@@ -30,7 +30,7 @@ export default function api(url, data = {}, loading = false) {
 	});
 
 	request.interceptor.response((response) => { /* 请求之后拦截器 */
-		uni.hideLoading() //停止加载
+		if (api.loading || loading) uni.hideLoading() //停止加载
 		uni.hideNavigationBarLoading() //完成停止加载
 		uni.stopPullDownRefresh() //停止下拉刷新
 		let resData = response.data
@@ -73,6 +73,7 @@ export default function api(url, data = {}, loading = false) {
 
 	return request.request({
 		url: api.url,
+		urlType: api.urlType,
 		data,
 		method: api.method
 	})

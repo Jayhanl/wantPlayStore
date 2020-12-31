@@ -7,7 +7,6 @@ export default {
 	login: {
 		register_code: {//手机注册验证码
 			url: 'login/register_code',
-			auth: false,
 			method: 'GET',
 			loading: true,
 			msg: '请求中'
@@ -15,20 +14,17 @@ export default {
 		},
 		wx_session: {//微信code
 			url: 'login/wx_session',
-			auth: false,
 			method: 'GET',
 			loading: true,
 			msg: '请求中'
 		},
 		account_register: {//手机账号注册
 			url: 'login/account_register',
-			auth: false,
 			method: 'POST',
 			loading: true,
 		},
 		create_data: {//商户入驻
 			url: 'login/create_data',
-			auth: false,
 			method: 'POST',
 			loading: true,
 			msg: '提交中'
@@ -39,18 +35,15 @@ export default {
 	data: {
 		homepage: {//首页数据
 			url: 'data/homepage',
-			auth: false,
 			method: 'GET',
 			loading: true,
 		},
 		merch_cate: {//商家主营类型
 			url: 'data/merch_cate',
-			auth: false,
 			method: 'GET',
 		},
 		merch_label: {//商家标签
 			url: 'data/merch_label',
-			auth: false,
 			method: 'GET',
 		},
 	},
@@ -59,24 +52,20 @@ export default {
 	info: {
 		list: {//列表数据
 			url: 'info/list',
-			auth: false,
 			method: 'GET',
 			loading: false,
 		},
 		detail: {//列表数据
 			url: 'info/detail',
-			auth: false,
 			method: 'GET',
 			loading: true,
 		},
 		create: {//创建
 			url: 'info/create',
-			auth: false,
 			method: 'POST',
 		},
 		'delete': {//删除
 			url: 'info/delete',
-			auth: false,
 			method: 'DELETE',
 		},
 	},
@@ -85,18 +74,14 @@ export default {
 	session: {
 		session_list: {//消息列表数据
 			url: 'session/session_list',
-			auth: false,
 			method: 'GET',
-			loading: true,
 		},
 		msg_list: {//对话内容
 			url: 'session/msg_list',
-			auth: false,
 			method: 'GET',
 		},
 		send_msg: {//发送消息
 			url: 'session/send_msg',
-			auth: false,
 			method: 'POST',
 		},
 	},
@@ -105,85 +90,70 @@ export default {
 	store: {
 		data: {//获取店铺信息
 			url: 'store/data',
-			auth: false,
 			method: 'GET',
-			loading: true,
 		},
 		update_info: {//更新店铺信息
 			url: 'store/update_info',
-			auth: false,
 			method: 'PUT',
 			loading: true,
 		},
 		update_logo: {//更新店铺logo
 			url: 'store/update_logo',
-			auth: false,
 			method: 'POST',
 			loading: true,
 		},
 		update_banner: {//更新店铺banner
 			url: 'store/update_banner',
-			auth: false,
 			method: 'POST',
 			loading: true,
 		},
 		open_store: {//开店
 			url: 'store/open_store',
-			auth: false,
 			method: 'PUT',
 			loading: true,
 		},
 		close_store: {//关店
 			url: 'store/close_store',
-			auth: false,
 			method: 'PUT',
 			loading: true,
 		},
 		lltg_list: {//获取开放推广列表
 			url: 'store/lltg_list',
-			auth: false,
 			method: 'GET',
 			loading: true,
 		},
 		tgw_list: {//推广位列表
 			url: 'store/tgw_list',
-			auth: false,
 			method: 'GET',
 			loading: true,
 		},
 		add_tgwtg: {//添加开放推广
 			url: 'store/add_tgwtg',
-			auth: false,
 			method: 'POST',
 			loading: true,
 		},
 		pause_tgwtg: {//暂停推广
 			url: 'store/pause_tgwtg',
-			auth: false,
 			method: 'PUT',
 			loading: true,
 		},
 		start_tgwtg: {//重新开始推广
 			url: 'store/start_tgwtg',
-			auth: false,
 			method: 'PUT',
 			loading: true,
 		},
 		stop_tgwtg: {//终止推广
 			url: 'store/stop_tgwtg',
-			auth: false,
 			method: 'PUT',
 			loading: true,
 		},
 		allow_tgwtg: {//接受邀请
 			url: 'store/allow_tgwtg',
-			auth: false,
 			method: 'PUT',
 			loading: true,
 		},
 		refuse_tgwtg: {//拒绝邀请
 			url: 'store/refuse_tgwtg',
-			auth: false,
 			method: 'PUT',
 			loading: true,
 		},
@@ -193,18 +163,15 @@ export default {
 	pttg: {
 		homepage: {//首页推广位申请
 			url: 'pttg/homepage',
-			auth: false,
 			method: 'POST',
 			loading: true,
 		},
 		picked: {//精选商家申请
 			url: 'pttg/picked',
-			auth: false,
 			method: 'POST',
 		},
 		round_top: {//周边商家置顶
 			url: 'pttg/round_top',
-			auth: false,
 			method: 'POST',
 		},
 	},
@@ -213,40 +180,38 @@ export default {
 	lltg: {
 		doing_ist: {//推广中列表
 			url: 'lltg/doing_list',
-			auth: false,
 			method: 'GET',
 		},
 		done_list: {//推广历史列表
 			url: 'lltg/done_list',
-			auth: false,
 			method: 'GET',
 		},
 		detail: {//推广历史详情
 			url: 'lltg/detail',
-			auth: false,
 			method: 'GET',
 		},
 		create: {//创建
 			url: 'lltg/create',
-			auth: false,
 			method: 'POST',
 			loading: true,
 		},
 		update: {//更新，是否开放
 			url: 'lltg/update',
-			auth: false,
 			method: 'PUT',
 			loading: true,
 		},
 		stop: {//终止推广
 			url: 'lltg/stop',
-			auth: false,
 			method: 'PUT',
+			loading: true,
+		},
+		merch_list: {//商家列表
+			url: 'lltg/merch_list',
+			method: 'GET',
 			loading: true,
 		},
 		invite: {//邀请商家
 			url: 'lltg/invite',
-			auth: false,
 			method: 'POST',
 			loading: true,
 		},
@@ -255,18 +220,165 @@ export default {
 	/** 会员管理 ↓ **/
 	member: {
 		fans_list: {//关注列表
-			url: 'lltg/fans_list',
-			auth: false,
+			url: 'member/fans_list',
 			method: 'GET',
 		},
 		today_list: {//今日顾客列表
-			url: 'lltg/today_list',
-			auth: false,
+			url: 'member/today_list',
 			method: 'GET',
 		},
 	},
+	
+	/** 我的模块 ↓ **/
+	mine: {
+		total: {//统计数据
+			url: 'mine/total',
+			method: 'GET',
+		},
+	},
+	
+	/** 钱包模块 ↓ **/
+	wallet: {
+		balance_list: {//余额日志
+			url: 'wallet/balance_list',
+			method: 'GET',
+		},
+		withdrawal_list: {//提现申请列表
+			url: 'wallet/withdrawal_list',
+			method: 'GET',
+		},
+		withdrawal: {//提现申请
+			url: 'wallet/withdrawal',
+			method: 'POST',
+		},
+	},
+	
+	/** 商品模块 ↓ **/
+	goods: {
+		data: {//优惠商品列表
+			url: 'goods/data/page',
+			utlType:'Bin',
+			method: 'GET',
+		},
+		add: {//添加优惠商品
+			url: 'goods/add',
+			utlType:'Bin',
+			method: 'POST',
+		},
+		update: {//修改优惠商品
+			url: 'goods/update',
+			utlType:'Bin',
+			method: 'PUT',
+		},
+		delete: {//删除优惠商品
+			url: 'goods/delete',
+			utlType:'Bin',
+			method: 'DELETE',
+		},
+		soleOut: {//上下架优惠商品
+			url: 'goods/soleOut',
+			utlType:'Bin',
+			method: 'PUT',
+		},
+	},
 
-
+	/** 商品推广模块 ↓ **/
+	publicity: {
+		platform_list: {//平台所有需要推广的商品列表
+			url: 'merch/publicity/platform/data/page',
+			utlType:'Bin',
+			method: 'GET',
+		},
+		goods_list: {//目前正在推广的商品
+			url: 'merch/publicity/goods/data/page',
+			utlType:'Bin',
+			method: 'GET',
+		},
+		goods_add: {//发布推广需求
+			url: 'merch/publicity/goods/add',
+			utlType:'Bin',
+			method: 'POST',
+		},
+		goods_soleOut: {//上下架推广需求，不影响核销收益计算
+			url: 'merch/publicity/goods/soleOut',
+			utlType:'Bin',
+			method: 'PUT',
+		},
+		invite_add: {//邀约推广
+			url: 'merch/publicity/invite/add',
+			utlType:'Bin',
+			method: 'POST',
+		},
+		invite_dispose: {//处理邀约推广
+			url: 'merch/publicity/invite/dispose',
+			utlType:'Bin',
+			method: 'PUT',
+		},
+		help_add: {//添加助推商品
+			url: 'merch/publicity/goods/help/add',
+			utlType:'Bin',
+			method: 'POST',
+		},
+		help_soleOut: {//下架助推
+			url: 'merch/publicity/goods/help/soleOut',
+			utlType:'Bin',
+			method: 'PUT',
+		},
+	},
+	
+	/** 平台商品推广模块 ↓ **/
+	platform: {
+		platform_list: {//平台推广商品
+			url: 'merch/platform/data/page',
+			utlType:'Bin',
+			method: 'GET',
+		},
+		log_list: {//平台推广商品的操作记录
+			url: 'merch/platform/log/page',
+			utlType:'Bin',
+			method: 'GET',
+		},
+		add: {//发布推广需求
+			url: 'merch/platform/add',
+			utlType:'Bin',
+			method: 'POST',
+		},
+		update: {//修改平台推广商品
+			url: 'merch/platform/update',
+			utlType:'Bin',
+			method: 'PUT',
+		},
+		delete: {//删除平台优惠券
+			url: 'platform/delete',
+			utlType:'Bin',
+			method: 'DELETE',
+		},
+	},
+	
+	/** 优惠券模块 ↓ **/
+	coupon: {
+		list: {//查看优惠券列表
+			url: 'data/page',
+			utlType:'Bin',
+			method: 'GET',
+		},
+		add: {//发布优惠券
+			url: 'add',
+			utlType:'Bin',
+			method: 'POST',
+		},
+		update: {//修改优惠券
+			url: 'update',
+			utlType:'Bin',
+			method: 'PUT',
+		},
+		delete: {//删除优惠券
+			url: 'delete',
+			utlType:'Bin',
+			method: 'DELETE',
+		},
+	},
+	
 	/** 上传Base64图片 ↓ **/
 	uploadBase64: {
 		url: 'index/uploadBase64',
@@ -304,7 +416,6 @@ export default {
 	sms: {
 		send: {
 			url: 'sms/send',
-			auth: false,
 			method: 'POST',
 			// desc: '发送短信',
 		},

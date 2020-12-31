@@ -154,12 +154,18 @@ export default {
 			dataList: []
 		};
 	},
-	onLoad() {
-		
+	onLoad(options) {
+		if (options.current) {
+			this.current = parseInt(options.current);
+		}
 	},
 	onShow() {
 		if (this.current === 0) this.getData();
 		else if (this.current === 2) this.getList('reload');
+	},
+	onPullDownRefresh() {
+		if (this.current === 0 || this.current === 1) this.getData('刷新成功');
+		else if (this.current === 2) this.getList('reload', '刷新成功');
 	},
 	methods: {
 		// 切换分类
@@ -253,12 +259,16 @@ export default {
 			});
 		},
 		//获取商家数据
-		getData() {
-			this.$api('store.data',{
-				bannerList:true,
-				store:true
+		getData(msg) {
+			this.$api('store.data', {
+				bannerList: true,
+				store: true
 			}).then(res => {
-				console.log(res);
+				if (msg) {
+					uni.showToast({
+						title: msg
+					});
+				}
 				this.bannerList = res.data.bannerList.map(item => {
 					item.url = item.imageSrc;
 					return [item];
@@ -271,30 +281,32 @@ export default {
 		},
 		//获取推广位数据
 		getList(load, msg) {
-			if(load==='reload') this.page = 1
-			this.dataStatus = 'loading' 
-			this.$api('store.tgw_list',{
+			if (load === 'reload') this.page = 1;
+			this.dataStatus = 'loading';
+			this.$api('store.tgw_list', {
 				page: this.page,
 				limit: this.limit
-			}).then(res => {
-				if (load === 'reload') {
-					uni.hideNavigationBarLoading();
-					uni.stopPullDownRefresh(); //停止下拉刷新
-				}
-				if (msg) {
-					uni.showToast({
-						title: msg
-					});
-				}
-				let resD = res.data;
-				if (resD.length === 0) {
-					this.dataStatus = 'nomore';
-					this.dataList = this.page === 1 ? [] : this.dataList;
-					return;
-				}
-				this.dataList = load === 'more' ? this.dataList.concat(resD) : resD;
-				this.dataStatus = resD.length === this.limit ? 'loadmore' : 'nomore';
-			}).catch(()=>this.dataStatus = 'loadmore')
+			})
+				.then(res => {
+					if (load === 'reload') {
+						uni.hideNavigationBarLoading();
+						uni.stopPullDownRefresh(); //停止下拉刷新
+					}
+					if (msg) {
+						uni.showToast({
+							title: msg
+						});
+					}
+					let resD = res.data;
+					if (resD.length === 0) {
+						this.dataStatus = 'nomore';
+						this.dataList = this.page === 1 ? [] : this.dataList;
+						return;
+					}
+					this.dataList = load === 'more' ? this.dataList.concat(resD) : resD;
+					this.dataStatus = resD.length === this.limit ? 'loadmore' : 'nomore';
+				})
+				.catch(() => (this.dataStatus = 'loadmore'));
 		},
 		//加载下一页
 		getMore() {

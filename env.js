@@ -14,6 +14,12 @@ const ENV_API_URL = {
 	production: 'http://192.168.3.41:8100/merchant/', //生产环境
 }
 
+//项目接口BIN
+const ENV_API_URL_BIN = {
+	development: 'http://192.168.3.30:8080/', //开发环境
+	production: 'http://192.168.3.30:8080/', //生产环境
+}
+
 //图片上传
 const IMG_UPLOAD_URL ='http://cdn.nccnt.com/';
 
@@ -23,5 +29,6 @@ const GAODE_URL ='https://restapi.amap.com/';
 // process.env.NODE_ENV
 export const LOGIN_URL = ENV_LOGIN_URL['development']; //后台根域名
 export const API_URL = ENV_API_URL['development']; //后台接口域名
+export const API_URL_BIN = ENV_API_URL_BIN['development']; //后台接口域名
 export const MAP_URL = GAODE_URL; //地图接口
 export const IMG_URL = IMG_UPLOAD_URL; //图片上传接口

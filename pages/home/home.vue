@@ -33,9 +33,9 @@ export default {
 			categoryList: [
 				// 分类菜单
 				{ id: 1, name: '店铺管理', img: '/static/category/1.png', url: 'store' },
-				{ id: 2, name: '优惠管理', img: '/static/category/2.png', url: 'store_edit' },
+				{ id: 2, name: '优惠管理', img: '/static/category/2.png', url: 'discounts' },
 				{ id: 3, name: '推广管理', img: '/static/category/3.png',url: 'promote'  },
-				{ id: 4, name: '会员管理', img: '/static/category/4.png',url:'store_tgw' }
+				{ id: 4, name: '会员管理', img: '/static/category/4.png',url:'member' }
 			]
 		};
 	},

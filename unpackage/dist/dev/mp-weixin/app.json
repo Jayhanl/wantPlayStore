@@ -15,16 +15,22 @@
     "pages/store/tgw",
     "pages/promote/promote",
     "pages/promote/create_flow",
+    "pages/promote/merch",
     "pages/promote/history",
     "pages/promote/history_detail",
+    "pages/discounts/discounts",
+    "pages/member/member",
     "pages/user/user",
+    "pages/user/wallet",
+    "pages/user/withdrawal",
+    "pages/user/withdrawal_list",
     "pages/order/order"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarBackgroundColor": "#FFF",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {

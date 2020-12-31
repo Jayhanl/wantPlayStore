@@ -221,7 +221,7 @@ export default {
 	},
 	// 年月日
 	timestamp(timestamp) {
-		let date = new Date(timestamp * 1000); //根据时间戳生成的时间对象
+		let date = new Date(timestamp); //根据时间戳生成的时间对象
 		let y = date.getFullYear();
 		let m = date.getMonth() + 1;
 		let d = date.getDate();

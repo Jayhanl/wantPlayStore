@@ -1,5 +1,6 @@
 import {
-	API_URL
+	API_URL,
+	API_URL_BIN
 } from '@/env'
 
 export default class Request {
@@ -111,6 +112,7 @@ export default class Request {
 		options.timeout = options.timeout || this.config.timeout
 		// #endif
 		options.url = options.url || ''
+		options.urlType = options.urlType || ''
 		options.data = options.data || {}
 		options.params = options.params || {}
 		options.header = options.header || this.config.header
@@ -162,7 +164,8 @@ export default class Request {
 			}
 			if (!next) return
 			delete _config.custom
-			let mergeUrl = Request.posUrl(_config.url) ? _config.url : (_config.baseUrl + _config.url)
+			console.log(_config)
+			let mergeUrl = Request.posUrl(_config.url) ? _config.url : ((_config.urlType==='Bin'?API_URL_BIN:_config.baseUrl) + _config.url)
 			if (JSON.stringify(_config.params) !== '{}') {
 				const paramsH = Request.addQueryString(_config.params);
 				mergeUrl += mergeUrl.indexOf('?') === -1 ? `?${paramsH}` : `&${paramsH}`

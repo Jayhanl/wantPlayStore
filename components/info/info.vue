@@ -8,7 +8,6 @@
 				border-radius="10"
 				:fade="true"
 				duration="450"
-				class="goods-cover"
 				:lazy-load="true"
 				mode="widthFix"
 			></u-image>
