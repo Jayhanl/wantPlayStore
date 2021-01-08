@@ -12,7 +12,7 @@
 			<view class="title">商品信息</view>
 			<u-form-item label="商品标题" prop="goodsTitle"><u-input v-model="form.goodsTitle" /></u-form-item>
 			<u-form-item label="商品描述" prop="goodsDesc"><u-input type="textarea" v-model="form.goodsDesc" /></u-form-item>
-			<u-form-item label="商品价值" prop="goodsValue"><u-input v-model="form.goodsValue" type="number" maxlength="8" placeholder="商品原价或总价值" /></u-form-item>
+			<u-form-item label="商品价值" prop="goodsValue"><u-input v-model="form.goodsValue" type="number" maxlength="6" placeholder="商品原价或总价值" /></u-form-item>
 			<u-form-item label="商品支付方式" prop="payWayType">
 				<u-input v-model="typeList[form.payWayType].text" type="select" @click="typeShow = true" placeholder="请选择商品支付方式" />
 				<u-action-sheet :list="typeList" v-model="typeShow" @click="index => (form.payWayType = index)"></u-action-sheet>
@@ -20,9 +20,9 @@
 			<u-form-item v-if="form.payWayType === 0 || form.payWayType === 1" :label="typeList[form.payWayType].label">
 				<u-input type="number" v-model="form.goodsPayValue" />
 			</u-form-item>
-			<u-form-item label="商品发布数量" prop="goodsLimit"><u-input v-model="form.goodsLimit" type="number" maxlength="8" placeholder="不填默认:无限制" /></u-form-item>
-			<u-form-item label="使用次数" prop="goodsGetNum"><u-input v-model="form.goodsGetNum" type="number" maxlength="8" placeholder="用户可使用的次数" /></u-form-item>
-			<u-form-item label="限购数量" prop="goodsGetLimit"><u-input v-model="form.goodsGetLimit" type="number" maxlength="8" placeholder="不填默认:无限制" /></u-form-item>
+			<u-form-item label="商品发布数量" prop="goodsLimit"><u-input v-model="form.goodsLimit" type="number" maxlength="6" placeholder="不填默认:无限制" /></u-form-item>
+			<u-form-item label="使用次数" prop="goodsGetNum"><u-input v-model="form.goodsGetNum" type="number" maxlength="6" placeholder="用户可使用的次数" /></u-form-item>
+			<u-form-item label="限购数量" prop="goodsGetLimit"><u-input v-model="form.goodsGetLimit" type="number" maxlength="6" placeholder="不填默认:无限制" /></u-form-item>
 			<u-form-item label="开始时间" prop="issueStartDate">
 				<u-input v-model="form.issueStartDate" placeholder="请选择开始时间" type="select" @click="startShow = true" />
 				<u-picker

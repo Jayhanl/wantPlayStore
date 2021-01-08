@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/discounts/discounts",
     "pages/home/home",
     "pages/login/login",
     "pages/login/code",
@@ -19,7 +20,6 @@
     "pages/promote/merch",
     "pages/promote/history",
     "pages/promote/history_detail",
-    "pages/discounts/discounts",
     "pages/discounts/create_goods",
     "pages/discounts/cooperation",
     "pages/discounts/select_product",

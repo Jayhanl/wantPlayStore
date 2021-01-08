@@ -8,14 +8,11 @@ export default function api(url, data = {}, loading = false) {
 	let api = getApiObj(url);
 
 	request.interceptor.request((config, cancel) => { /* 请求之前拦截器 */
-		console.log(api.loading)
 		if (api.loading || loading) uni.showLoading({
 			title: api.msg || ''
 		})
 
 		let tokenFlag = store.getters.loginFlag;
-		console.log(store)
-		console.log(store.getters)
 		if (api.auth && !tokenFlag) {
 			store.commit('OUT_LOGIN');
 			console.log('暂未登录,已阻止此次API请求~');
@@ -23,14 +20,13 @@ export default function api(url, data = {}, loading = false) {
 		}
 		if (tokenFlag) {
 			//token 即为登录token
-			console.log(store.state)
 			config.header.Authorization = store.state.user.tokenInfo.token;
 		}
 		return config
 	});
 
 	request.interceptor.response((response) => { /* 请求之后拦截器 */
-		if (api.loading || loading) uni.hideLoading() //停止加载
+		uni.hideLoading() //停止加载
 		uni.hideNavigationBarLoading() //完成停止加载
 		uni.stopPullDownRefresh() //停止下拉刷新
 		let resData = response.data

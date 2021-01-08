@@ -5,19 +5,25 @@
 		<view v-if="current === 0">
 			<view class="discounts-title">直销优惠商品</view>
 			<discounts-goods remaining :dataList="dataList[0]" @on-status="updateStatus" />
-			<view class="bottom-sticky"><u-button type="success" ripple @click="goGoods">发布直销商品</u-button></view>
+			<view class="bottom-sticky"><u-button type="success" ripple @click="goCreate">发布直销商品</u-button></view>
 		</view>
 		<!-- 合作优惠商品 -->
 		<view v-if="current === 1">
 			<view class="discounts-title">合作优惠商品</view>
 			<discounts-cooperation remaining completed :dataList="dataList[1]" @on-status="updateStatus" />
-			<view class="bottom-sticky"><u-button type="success" ripple @click="goCooperation">获取合作商品</u-button></view>
+			<view class="bottom-sticky"><u-button type="success" ripple @click="goCreate">获取合作商品</u-button></view>
 		</view>
 		<!-- 优惠商品管理 -->
 		<view v-if="current === 2">
 			<view class="discounts-title">优惠商品</view>
 			<discounts-product :dataList="dataList[2]" @on-status="updateStatus" />
-			<view class="bottom-sticky"><u-button type="success" ripple @click="goProduct">发布优惠产品</u-button></view>
+			<view class="bottom-sticky"><u-button type="success" ripple @click="goCreate">发布优惠商品</u-button></view>
+		</view>
+		<!-- 平台商品管理 -->
+		<view v-if="current === 3">
+			<view class="discounts-title">平台商品</view>
+			<discounts-product :dataList="dataList[3]" @on-status="updateStatus" />
+			<view class="bottom-sticky"><u-button type="success" ripple @click="goCreate">发布平台商品</u-button></view>
 		</view>
 		<!-- 占位 -->
 		<u-gap height="100" bg-color="#FDFDFD"></u-gap>
@@ -42,19 +48,24 @@ export default {
 					name: '合作优惠商品'
 				},
 				{
-					name: '优惠商品管理'
+					name: '优惠商品'
+				},
+				{
+					name: '平台商品'
 				}
 			],
-			api: ['goods.list', 'publicity.need.goods_list', 'coupon.list'],
-			delApi: ['goods.soldOut', 'publicity.need.goods_soldOut', 'coupon.delete'],
-			statusApi: ['goods.soldOut', 'publicity.need.help_soldOut', 'coupon.delete'],
-			page: [1, 1, 1],
-			limit: [10, 10, 10],
-			dataStatus: ['loadmore', 'loadmore', 'loadmore'],
-			dataList: [[], [], []]
+			api: ['goods.list', 'publicity.help.goods_list', 'coupon.list','discounts_platform.list'],
+			delApi: ['goods.soldOut', 'publicity.help.help_soldOut', 'coupon.delete','discounts_platform.delete'],
+			statusApi: ['goods.soldOut', 'publicity.help.help_soldOut', 'coupon.delete','discounts_platform.delete'],
+			createPath:['discounts_create_goods','cooperation_goods','create_product','discounts_create_platform'],
+			page: [1, 1, 1, 1],
+			limit: [10, 10, 10, 10],
+			dataStatus: ['loadmore', 'loadmore', 'loadmore', 'loadmore'],
+			dataList: [[], [], [], []]
 		};
 	},
 	onLoad() {
+		uni.showLoading();
 		// this.getData();
 		// this.getList();
 	},
@@ -82,25 +93,14 @@ export default {
 				this.getList();
 			}
 		},
-		// 前往发布滞销商品
-		goGoods() {
+		// 前往发布商品
+		goCreate() {
+			console.log(this.createPath[this.current])
 			this.$Router.push({
-				name: 'discounts_create_goods'
+				name: this.createPath[this.current]
 			});
 		},
-		// 前往获取合作商品
-		goCooperation() {
-			this.$Router.push({
-				name: 'cooperation_goods'
-			});
-		},
-		// 前往发布优惠产品
-		goProduct() {
-			this.$Router.push({
-				name: 'create_product'
-			});
-		},
-		// 下架
+		// 上下架
 		updateStatus(item) {
 			let that = this,
 				data = {};
@@ -117,7 +117,7 @@ export default {
 				content: '是否确认下架，不影响核销收益计算',
 				success(res) {
 					if (res.confirm) {
-						that.$api(`${that.statusApi[that.current]}`, data).then(() => {
+						that.$api(that.statusApi[that.current], data).then(() => {
 							that.getList('reload', '操作成功');
 						});
 					}

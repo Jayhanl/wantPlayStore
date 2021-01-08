@@ -163,9 +163,9 @@
 			}
 		},   {
 			"path": "pages/discounts/create_platform",
-			"name": "create_platform",
+			"name": "discounts_create_platform",
 			"style": {
-				"navigationBarTitleText": "添加平台推广产品",
+				"navigationBarTitleText": "添加平台推广商品",
 				"enablePullDownRefresh": true
 			}
 		},  {

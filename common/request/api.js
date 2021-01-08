@@ -410,6 +410,38 @@ export default {
 		},
 	},
 
+	/** 平台商品推广模块 ↓ **/
+	discounts_platform: {
+		list: { //查看平台推广商品列表
+			url: 'platform/data/page',
+			urlType: 'Bin',
+			method: 'GET',
+		},
+		log: { //查看平台推广商品操作记录
+			url: 'platform/log/page',
+			urlType: 'Bin',
+			method: 'GET',
+		},
+		add: { //发布平台推广商品
+			url: 'platform/add',
+			urlType: 'Bin',
+			method: 'POST',
+			loading: true,
+		},
+		update: { //修改平台推广商品
+			url: 'platform/update',
+			urlType: 'Bin',
+			method: 'PUT',
+			loading: true,
+		},
+		delete: { //删除平台推广商品
+			url: 'platform/delete',
+			urlType: 'Bin',
+			method: 'DELETE',
+			loading: true,
+		},
+	},
+
 	/** 上传Base64图片 ↓ **/
 	uploadBase64: {
 		url: 'index/uploadBase64',
