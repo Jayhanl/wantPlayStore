@@ -25,10 +25,8 @@
   padding: 20rpx;
   text-align: center;
   background: #fff;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
-  -webkit-box-shadow: 0px 0px 8px #eee;
-          box-shadow: 0px 0px 8px #eee;
+  border-radius: 50%;
+  box-shadow: 0px 0px 8px #eee;
 }
 .color-main.data-v-54899586 {
   color: #f06c7a !important;
@@ -50,8 +48,7 @@
 /* 透明度 */
 /* 文章场景相关 */
 .u-grid-item.data-v-54899586 {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   background: #fff;
 
   display: -webkit-box;

@@ -25,10 +25,8 @@
   padding: 20rpx;
   text-align: center;
   background: #fff;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
-  -webkit-box-shadow: 0px 0px 8px #eee;
-          box-shadow: 0px 0px 8px #eee;
+  border-radius: 50%;
+  box-shadow: 0px 0px 8px #eee;
 }
 .color-main.data-v-460c1d26 {
   color: #f06c7a !important;
@@ -81,10 +79,8 @@
           flex: 1;
 }
 .u-input--border.data-v-460c1d26 {
-  -webkit-border-radius: 6rpx;
-          border-radius: 6rpx;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
+  border-radius: 6rpx;
+  border-radius: 4px;
   border: 1px solid #dcdfe6;
 }
 .u-input--error.data-v-460c1d26 {

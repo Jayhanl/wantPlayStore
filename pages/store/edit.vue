@@ -10,11 +10,11 @@
 			</u-form-item>
 			<u-form-item label="营业开始时间" prop="merchYysjStart">
 				<u-input v-model="form.merchYysjStart" placeholder="请选择营业开始时间" type="select" @click="startShow = true" />
-				<u-picker mode="time" v-model="startShow" :params="params" title="营业开始时间" @confirm="e => (form.merchYysjStart = e.hour + ':' + e.minute)"></u-picker>
+				<u-picker mode="time" v-model="startShow" :params="dateParams" title="营业开始时间" @confirm="e => (form.merchYysjStart = e.hour + ':' + e.minute)"></u-picker>
 			</u-form-item>
 			<u-form-item label="营业结束时间" prop="merchYysjEnd">
 				<u-input v-model="form.merchYysjEnd" placeholder="请选择营业结束时间" type="select" @click="endShow = true" />
-				<u-picker mode="time" v-model="endShow" :params="params" title="营业结束时间" @confirm="e => (form.merchYysjEnd = e.hour + ':' + e.minute)"></u-picker>
+				<u-picker mode="time" v-model="endShow" :params="dateParams" title="营业结束时间" @confirm="e => (form.merchYysjEnd = e.hour + ':' + e.minute)"></u-picker>
 			</u-form-item>
 			<u-form-item label="人均消费" prop="merchCpp"><u-input v-model="form.merchCpp" type="number" maxlength="6" /></u-form-item>
 			<u-form-item label="商铺联系方式" prop="merchMobile"><u-input v-model="form.merchMobile" maxlength="20" /></u-form-item>
@@ -38,7 +38,7 @@ export default {
 		return {
 			startShow: false,
 			endShow: false,
-			params: {
+			dateParams: {
 				year: false,
 				month: false,
 				day: false,

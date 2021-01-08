@@ -717,10 +717,8 @@
   padding: 20rpx;
   text-align: center;
   background: #fff;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
-  -webkit-box-shadow: 0px 0px 8px #eee;
-          box-shadow: 0px 0px 8px #eee;
+  border-radius: 50%;
+  box-shadow: 0px 0px 8px #eee;
 }
 .color-main.data-v-6e20bb40 {
   color: #f06c7a !important;

@@ -14,11 +14,21 @@
     "pages/store/edit",
     "pages/store/tgw",
     "pages/promote/promote",
+    "pages/promote/create_goods",
     "pages/promote/create_flow",
     "pages/promote/merch",
     "pages/promote/history",
     "pages/promote/history_detail",
     "pages/discounts/discounts",
+    "pages/discounts/create_goods",
+    "pages/discounts/cooperation",
+    "pages/discounts/select_product",
+    "pages/discounts/create_product",
+    "pages/discounts/create_platform",
+    "pages/discounts/goods_detail",
+    "pages/discounts/platform_detail",
+    "pages/discounts/product_detail",
+    "pages/discounts/cooperation_detail",
     "pages/member/member",
     "pages/user/user",
     "pages/user/wallet",
@@ -72,6 +82,9 @@
     "scope.userLocation": {
       "desc": "获取用户当前位置"
     }
+  },
+  "uniStatistics": {
+    "enable": true
   },
   "usingComponents": {}
 }

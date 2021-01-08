@@ -4,7 +4,7 @@
 		<view class="content">
 			<view class="title">欢迎登录想玩</view>
 			<input class="u-border-bottom" type="number" maxlength="11" v-model="accountName" placeholder="请输入手机号" />
-			<view class="tips">未注册的手机号验证后自动创建想玩账号</view>
+			<view class="tips">未注册的手机号验证后自动发布想玩账号</view>
 			<button @tap="submit"  :class="['getCaptcha',accountName?'bg-main':'']">获取短信验证码</button>
 			<view class="alternative">
 				<view class="password"><!-- 密码登录 --></view>

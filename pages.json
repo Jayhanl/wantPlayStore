@@ -95,6 +95,12 @@
 				"enablePullDownRefresh": true
 			}
 		}, {
+			"path": "pages/promote/create_goods",
+			"name": "promote_create_goods",
+			"style": {
+				"navigationBarTitleText": "发布商品推广"
+			}
+		},  {
 			"path": "pages/promote/create_flow",
 			"name": "promote_create_flow",
 			"style": {
@@ -124,9 +130,67 @@
 			"path": "pages/discounts/discounts",
 			"name": "discounts",
 			"style": {
-				"backgroundColor": "#007AFF",
 				"navigationBarTitleText": "优惠管理",
 				"enablePullDownRefresh": true
+			}
+		},   {
+			"path": "pages/discounts/create_goods",
+			"name": "discounts_create_goods",
+			"style": {
+				"navigationBarTitleText": "添加直销商品",
+				"enablePullDownRefresh": true
+			}
+		},   {
+			"path": "pages/discounts/cooperation",
+			"name": "cooperation_goods",
+			"style": {
+				"navigationBarTitleText": "获取合作商品",
+				"enablePullDownRefresh": true
+			}
+		},    {
+			"path": "pages/discounts/select_product",
+			"name": "select_product",
+			"style": {
+				"navigationBarTitleText": "选择优惠产品",
+				"enablePullDownRefresh": true
+			}
+		},    {
+			"path": "pages/discounts/create_product",
+			"name": "create_product",
+			"style": {
+				"navigationBarTitleText": "添加优惠产品",
+				"enablePullDownRefresh": true
+			}
+		},   {
+			"path": "pages/discounts/create_platform",
+			"name": "create_platform",
+			"style": {
+				"navigationBarTitleText": "添加平台推广产品",
+				"enablePullDownRefresh": true
+			}
+		},  {
+			"path": "pages/discounts/goods_detail",
+			"name": "goods_detail",
+			"style": {
+				"navigationBarTitleText": "直销商品详情"
+			}
+		},  {
+			"path": "pages/discounts/platform_detail",
+			"name": "platform_detail",
+			"style": {
+				"navigationBarTitleText": "平台商品详情"
+			}
+		},  {
+			"path": "pages/discounts/product_detail",
+			"name": "product_detail",
+			"style": {
+				"navigationBarTitleText": "优惠商品详情"
+			}
+		},  {
+			"path": "pages/discounts/cooperation_detail",
+			"name": "cooperation_detail",
+			"style": {
+				"navigationBarTitleText": "合作优惠商品详情"
 			}
 		},  {
 			"path": "pages/member/member",
