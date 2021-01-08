@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "优惠管理",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "u-subsection": "/uview-ui/components/u-subsection/u-subsection",
+    "discounts-goods": "/components/discounts-goods/discounts-goods",
+    "u-button": "/uview-ui/components/u-button/u-button",
+    "discounts-cooperation": "/components/discounts-cooperation/discounts-cooperation",
+    "discounts-product": "/components/discounts-product/discounts-product",
+    "u-gap": "/uview-ui/components/u-gap/u-gap"
+  }
+}

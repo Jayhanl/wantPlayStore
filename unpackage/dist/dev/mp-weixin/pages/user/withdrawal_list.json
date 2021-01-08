@@ -1,0 +1,12 @@
+{
+  "navigationBarBackgroundColor": "#3998EA",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "提现记录",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "u-cell-group": "/uview-ui/components/u-cell-group/u-cell-group",
+    "u-cell-item": "/uview-ui/components/u-cell-item/u-cell-item",
+    "u-empty": "/uview-ui/components/u-empty/u-empty",
+    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore"
+  }
+}

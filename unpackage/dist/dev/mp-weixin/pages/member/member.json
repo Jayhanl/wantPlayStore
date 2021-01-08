@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "会员管理",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "u-subsection": "/uview-ui/components/u-subsection/u-subsection",
+    "u-grid": "/uview-ui/components/u-grid/u-grid",
+    "u-grid-item": "/uview-ui/components/u-grid-item/u-grid-item",
+    "u-avatar": "/uview-ui/components/u-avatar/u-avatar"
+  }
+}

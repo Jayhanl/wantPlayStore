@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "商家动态",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "active": "/components/active/active",
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "u-empty": "/uview-ui/components/u-empty/u-empty",
+    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore"
+  }
+}

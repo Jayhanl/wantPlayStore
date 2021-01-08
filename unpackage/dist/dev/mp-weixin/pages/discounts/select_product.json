@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "选择优惠产品",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "discounts-product": "/components/discounts-product/discounts-product"
+  }
+}
