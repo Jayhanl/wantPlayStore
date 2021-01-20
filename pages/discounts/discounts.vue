@@ -10,7 +10,7 @@
 		<!-- 合作优惠商品 -->
 		<view v-if="current === 1">
 			<view class="discounts-title">合作优惠商品</view>
-			<discounts-cooperation remaining completed :dataList="dataList[1]" @on-status="updateStatus" />
+			<discounts-cooperation remaining completed :dataList="dataList[1]" @on-status="updateStatus" @on-get="getList" />
 			<view class="bottom-sticky"><u-button type="success" ripple @click="goCreate">获取合作商品</u-button></view>
 		</view>
 		<!-- 优惠商品管理 -->
@@ -22,11 +22,14 @@
 		<!-- 平台商品管理 -->
 		<view v-if="current === 3">
 			<view class="discounts-title">平台商品</view>
-			<discounts-product :dataList="dataList[3]" @on-status="updateStatus" />
+			<view class="u-text-right u-m-r-20 u-m-b-20"><u-button class="u-m-r-20" type="primary" size="mini" ripple @click="goHistory">查看操作记录</u-button></view>
+			<discounts-platform :dataList="dataList[3]" @on-status="updateStatus" />
 			<view class="bottom-sticky"><u-button type="success" ripple @click="goCreate">发布平台商品</u-button></view>
 		</view>
+		<u-empty :show="dataList[current].length === 0 && dataStatus[current] === 'nomore'" mode="list"></u-empty>
+		<u-loadmore :status="dataStatus[current]" @loadmore="getMore" />
 		<!-- 占位 -->
-		<u-gap height="100" bg-color="#FDFDFD"></u-gap>
+		<u-gap height="110" bg-color="#FDFDFD"></u-gap>
 	</view>
 </template>
 
@@ -54,10 +57,10 @@ export default {
 					name: '平台商品'
 				}
 			],
-			api: ['goods.list', 'publicity.help.goods_list', 'coupon.list','discounts_platform.list'],
-			delApi: ['goods.soldOut', 'publicity.help.help_soldOut', 'coupon.delete','discounts_platform.delete'],
-			statusApi: ['goods.soldOut', 'publicity.help.help_soldOut', 'coupon.delete','discounts_platform.delete'],
-			createPath:['discounts_create_goods','cooperation_goods','create_product','discounts_create_platform'],
+			api: ['goods.list', 'publicity.help.goods_list', 'coupon.list', 'discounts_platform.list'],
+			delApi: ['goods.soldOut', 'publicity.help.help_soldOut', 'coupon.delete', 'discounts_platform.delete'],
+			statusApi: ['goods.soldOut', 'publicity.help.help_soldOut', 'coupon.delete', 'discounts_platform.delete'],
+			createPath: ['discounts_goods_create', 'cooperation_goods', 'product_create', 'discounts_platform_create'],
 			page: [1, 1, 1, 1],
 			limit: [10, 10, 10, 10],
 			dataStatus: ['loadmore', 'loadmore', 'loadmore', 'loadmore'],
@@ -66,6 +69,9 @@ export default {
 	},
 	onLoad() {
 		uni.showLoading();
+		if (this.$Route.query.current) {
+			this.current = this.$Route.query.current;
+		}
 		// this.getData();
 		// this.getList();
 	},
@@ -75,12 +81,7 @@ export default {
 		// else if (this.current === 2) this.getList('reload');
 	},
 	onPullDownRefresh() {
-		if (this.current === 0) this.getData('刷新成功');
-		else if (this.current === 3) this.getList('reload', '刷新成功');
-		else {
-			uni.hideNavigationBarLoading(); //完成停止加载
-			uni.stopPullDownRefresh(); //停止下拉刷新
-		}
+		this.getList('reload', '刷新成功');
 	},
 	onReachBottom() {
 		this.getMore();
@@ -95,23 +96,26 @@ export default {
 		},
 		// 前往发布商品
 		goCreate() {
-			console.log(this.createPath[this.current])
 			this.$Router.push({
 				name: this.createPath[this.current]
 			});
 		},
-		// 上下架
+		goHistory() {
+			this.$Router.push({
+				name: 'discounts_platform_history'
+			});
+		}, // 上下架
 		updateStatus(item) {
 			let that = this,
 				data = {};
 			console.log(item);
 			if (that.current === 0) {
 				data.goodsId = item.goodsId;
-				data.isSoldOut = item.isSoldOut ? false : true;
+				data.isSoldOut = !item.isSoldOut;
 			}
 			if (that.current === 1) {
 				data.gpmId = item.gpmId;
-				data.isSoldOut = item.gpmIsSoldOut ? false : true;
+				data.isSoldOut = !item.gpmIsSoldOut;
 			}
 			uni.showModal({
 				content: '是否确认下架，不影响核销收益计算',

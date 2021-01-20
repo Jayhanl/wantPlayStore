@@ -2,7 +2,7 @@
 	<view>
 		<view v-for="item in dataList" :key="item.gpmId" class="goods-cont">
 			<view class="goods-item">
-				<u-image :src="item.goodsImageUrl" width="150" height="150" border-radius="10" :fade="true" duration="450" :lazy-load="true" mode="widthFix"></u-image>
+				<u-image :src="item.goodsImageUrl" width="150" height="150" border-radius="10" mode="widthFix"></u-image>
 				<view class="goods-info">
 					<text>
 						标题：
@@ -18,7 +18,7 @@
 					</text>
 					<text>
 						助推商家：
-						<text>{{ item.publicityMerchName }}</text>
+						<text>{{ item.merchName }}</text>
 					</text>
 					<text>
 						推广提成：
@@ -34,13 +34,23 @@
 					</text>
 					<text>
 						商品状态：
-						<text>{{ item.gpmIsSoldOut?'正常':'已下架' }}</text>
+						<text>{{ item.gpmIsSoldOut ? '已下架' : '正常' }}</text>
+					</text>
+					<text>
+						推广状态：
+						<text>{{ item.merchPublicityStatusString }}</text>
 					</text>
 				</view>
 			</view>
 			<view class="goods-btns">
 				<u-button class="u-m-r-20" plain ripple shape="circle" size="mini" type="primary" @click="goDetail(item)">查看详情</u-button>
-				<u-button plain ripple shape="circle" size="mini" :type="item.gpmIsSoldOut?'error':'success'" @click="updateStatus(item)">{{item.gpmIsSoldOut?'下架':'上架'}}</u-button>
+				<u-button plain ripple shape="circle" size="mini" :type="item.gpmIsSoldOut ? 'success' : 'error'" @click="updateStatus(item)">
+					{{ item.gpmIsSoldOut ? '上架' : '下架' }}
+				</u-button>
+				<u-button class="u-m-r-20 u-m-l-20" v-if="item.merchPublicityStatus === 0" ripple shape="circle" size="mini" type="success" @click="updatePromote(item, true)">
+					接受推广
+				</u-button>
+				<u-button v-if="item.merchPublicityStatus === 0" ripple shape="circle" size="mini" type="error" @click="updatePromote(item, false)">拒绝推广</u-button>
 			</view>
 		</view>
 	</view>
@@ -56,7 +66,7 @@ export default {
 		remaining: false,
 		completed: false
 	},
-	methods:{
+	methods: {
 		//前往详情
 		goDetail(item) {
 			this.$Router.push({
@@ -69,6 +79,24 @@ export default {
 		//上下架
 		updateStatus(item) {
 			this.$emit('on-status', item);
+		},
+		//处理推广邀请
+		updatePromote(item, status) {
+			let that = this;
+			uni.showModal({
+				title: `${status ? '接受' : '拒绝'}推广`,
+				content: `是否确认${status ? '接受' : '拒绝'}商家：${item.merchName} 的推广邀请`,
+				success(res) {
+					if (res.confirm) {
+						that.$api('publicity.help.invite_dispose', {
+							gpmId: item.gpmId,
+							isAccept: status
+						}).then(() => {
+							that.$emit('on-get', 'reload', '操作成功');
+						});
+					}
+				}
+			});
 		}
 	}
 };

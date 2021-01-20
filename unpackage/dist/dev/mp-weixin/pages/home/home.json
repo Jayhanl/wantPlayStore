@@ -7,6 +7,7 @@
     "u-grid-item": "/uview-ui/components/u-grid-item/u-grid-item",
     "info": "/components/info/info",
     "u-empty": "/uview-ui/components/u-empty/u-empty",
-    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore"
+    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore",
+    "version": "/components/version/version"
   }
 }

@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<view class="u-flex top">
+		<!-- <view class="u-flex top">
 			<view class="item">
 				<text class="name">推广商家数</text>
 				<text>{{ dataD.doingMerchNum }}</text>
@@ -13,8 +13,15 @@
 				<text class="name">目标流量人数</text>
 				<text>{{ dataD.targetNum }}</text>
 			</view>
+		</view> -->
+		<view v-if="current === 0" v-for="(item,ind) in dataList" :key="ind" class="u-flex store">
+			<u-avatar src="" mode="square"></u-avatar>
+			<view class="info">
+				<text class="u-font-30">{{item.gpmMerchName}}</text>
+				<text class="u-font-26">商品核销：{{item.gpmSellNum}}份</text>
+			</view>
 		</view>
-		<view v-for="(item,index) in dataList" :key="index" class="u-flex store">
+		<view v-else v-for="(item,index) in dataList" :key="index" class="u-flex store">
 			<u-avatar src="" mode="square"></u-avatar>
 			<view class="info">
 				<text class="u-font-30">{{item.merchName}}</text>
@@ -30,16 +37,19 @@
 export default {
 	data() {
 		return {
-			planId: '',
+			current: 0,
+			api:['publicity.need.merch_list','lltg.detail'],
 			page: 1,
 			limit: 10,
 			dataStatus: 'loadmore',
-			dataD:{},
+			data:{},
+			historyId:'',
 			dataList: []
 		};
 	},
 	onLoad() {
-		this.planId = this.$Route.query.id;
+		this.historyId = this.$Route.query.id;
+		this.current = this.$Route.query.current;
 		this.getList();
 	},
 	onPullDownRefresh() {
@@ -53,8 +63,9 @@ export default {
 		getList(load, msg) {
 			if (load === 'reload') this.page = 1;
 			this.dataStatus = 'loading';
-			this.$api('lltg.detail', {
-				planId: this.planId,
+			this.$api(this.api[this.current], {
+				planId: this.historyId,
+				goodsId: this.goodsId,
 				page: this.page,
 				limit: this.limit
 			}).then(res => {
@@ -63,8 +74,8 @@ export default {
 							title: msg
 						});
 					}
-					if(this.page === 1) this.dataD = res.data
-					let resD = res.data.doingMerchantList;
+					// if(this.page === 1) this.dataD = res.data
+					let resD = (this.current? res.data.doingMerchantList:res.data.records);
 					if (resD.length === 0) {
 						this.dataStatus = 'nomore';
 						this.dataList = this.page === 1 ? [] : this.dataList;

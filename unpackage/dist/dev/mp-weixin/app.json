@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/discounts/discounts",
-    "pages/home/home",
     "pages/login/login",
+    "pages/home/home",
+    "pages/home/info_detail",
     "pages/login/code",
     "pages/login/enter",
     "pages/active/active",
@@ -15,19 +15,24 @@
     "pages/store/edit",
     "pages/store/tgw",
     "pages/promote/promote",
-    "pages/promote/create_goods",
-    "pages/promote/create_flow",
+    "pages/promote/goods_create",
+    "pages/promote/flow_create",
     "pages/promote/merch",
     "pages/promote/history",
     "pages/promote/history_detail",
-    "pages/discounts/create_goods",
-    "pages/discounts/cooperation",
-    "pages/discounts/select_product",
-    "pages/discounts/create_product",
-    "pages/discounts/create_platform",
+    "pages/discounts/discounts",
+    "pages/discounts/goods_create",
+    "pages/discounts/goods_update",
     "pages/discounts/goods_detail",
-    "pages/discounts/platform_detail",
+    "pages/discounts/cooperation",
+    "pages/discounts/product_select",
+    "pages/discounts/product_create",
+    "pages/discounts/product_update",
     "pages/discounts/product_detail",
+    "pages/discounts/platform_create",
+    "pages/discounts/platform_update",
+    "pages/discounts/platform_history",
+    "pages/discounts/platform_detail",
     "pages/discounts/cooperation_detail",
     "pages/member/member",
     "pages/user/user",
@@ -86,5 +91,6 @@
   "uniStatistics": {
     "enable": true
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap94.json"
 }

@@ -1,0 +1,1 @@
+<view class="content data-v-43f04cbc"><discounts-product vue-id="3a1848b8-1" dataList="{{dataList}}" select="{{true}}" class="data-v-43f04cbc" bind:__l="__l"></discounts-product></view>

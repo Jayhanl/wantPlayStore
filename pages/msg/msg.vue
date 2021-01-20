@@ -16,6 +16,8 @@
 					</view>
 				</view>
 			</view>
+			<u-empty :show="dataList.length === 0 && dataStatus === 'nomore'" mode="list"></u-empty>
+			<u-loadmore :status="dataStatus" @loadmore="getMore" />
 		</view>
 	</view>
 </template>
@@ -47,7 +49,7 @@ export default {
 		goChat(item) {
 			this.$Router.push({
 				name: 'msg_chat',
-				params: { name: item.merchName,id: item.sessionId,logo:item.merchLogo}
+				params: { name: item.merchName, id: item.sessionId, logo: item.merchLogo }
 			});
 		},
 		//获取数据列表
@@ -84,7 +86,7 @@ export default {
 			if (this.dataStatus === 'nomore') return;
 			this.page += 1;
 			this.getList('more');
-		},
+		}
 	}
 };
 </script>
@@ -102,7 +104,6 @@ export default {
 			display: flex;
 			justify-content: flex-start;
 			.left {
-				
 			}
 			.right {
 				flex-shrink: 1;

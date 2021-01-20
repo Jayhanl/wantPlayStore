@@ -6,7 +6,7 @@ import api from '@/common/request/index'
 import store from '@/common/store'
 
 export default {
-	wxLogin() {
+	wxLogin(login) {
 		let that = this
 		uni.login({
 			provider: 'weixin',
@@ -16,9 +16,33 @@ export default {
 					code: res.code
 				}).then(res => {
 					store.commit('TOKEN_INFO', res.data);
+					that.login(res.data)
 				});
 			}
 		});
+	},
+	login(item) {
+		store.state.user.tokenInfo.status = item.status
+		let that = this
+		if (item.status === 0) {
+			uni.reLaunch({
+				url: '/pages/login/login'
+			})
+		} else if (item.status === 1) {
+			uni.reLaunch({
+				url: '/pages/login/enter'
+			})
+		} else {
+			uni.reLaunch({
+				url: '/pages/home/home',
+				success() {
+					if (item.status === 2) that.msg('账号审核中！')
+					else uni.showToast({
+						title: '登录成功'
+					})
+				}
+			})
+		}
 	},
 	/**
 	 * 跳转再封装，不支持复杂传参。
@@ -323,14 +347,14 @@ export default {
 		});
 	},
 	// 处理base64图片加前缀
-	imgAddSuffix(img) {
+	imgAddSuffix(img, filtrate = false) {
 		console.log(img)
 		if (img === '') {
 			return ''
 		} else if (typeof(img) === 'object') {
 			return img.map(item => {
 				if (item.indexOf('https://') === 0) {
-					return item
+					return filtrate ? '' : item
 				}
 				let str = item.substring(item.lastIndexOf('.') + 1)
 				return `data:image/${str};base64,` + wx.getFileSystemManager().readFileSync(item, 'base64')
@@ -405,9 +429,9 @@ export default {
 	},
 	//是否数字
 	isNumber(val) {
-	  let regPos = /^\d+(\.\d+)?$/
-	  if (regPos.test(val)) return true
-	  else return false
+		let regPos = /^\d+(\.\d+)?$/
+		if (regPos.test(val)) return true
+		else return false
 	},
 
 }

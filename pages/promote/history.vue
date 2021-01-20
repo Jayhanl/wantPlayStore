@@ -8,7 +8,13 @@
 				<u-th class="u-th">截止</u-th>
 				<u-th class="u-th">操作</u-th>
 			</u-tr>
-			<u-tr v-for="(item, index) in dataList[current]" :key="item.planId">
+			<u-tr v-if="current===0" v-for="item in dataList[current]" :key="item.couponId">
+				<u-td class="u-td">{{ item.goodsLimit }}份</u-td>
+				<u-td class="u-td">{{ item.income }}元/份</u-td>
+				<u-td class="u-td">{{ item.issueEndDate }}</u-td>
+				<u-td class="u-td"><u-button :custom-style="{ padding: '0 10rpx' }" type="primary" size="mini" ripple @click="goDetail(item.goodsId)">查看详情</u-button></u-td>
+			</u-tr>
+			<u-tr v-else v-for="item in dataList[current]" :key="item.planId">
 				<u-td class="u-td">{{ item.targetNum }}人</u-td>
 				<u-td class="u-td">{{ item.tcCondition }}人/元</u-td>
 				<u-td class="u-td">{{ item.endTime }}</u-td>
@@ -62,7 +68,7 @@ export default {
 		goDetail(id) {
 			this.$Router.push({
 				name: 'promote_history_detail',
-				params: { id: id }
+				params: { id,current:this.current }
 			});
 		},
 		//获取数据

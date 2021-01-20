@@ -85,6 +85,11 @@
 export default {
 	name: 'u-button',
 	props: {
+		// 是否不要边框
+		borderNone: {
+			type: Boolean,
+			default: false
+		},
 		// 是否细边框
 		hairLine: {
 			type: Boolean,
@@ -236,7 +241,7 @@ export default {
 		},
 		// 在'primary', 'success', 'error', 'warning'类型下，不显示边框，否则会造成四角有毛刺现象
 		showHairLineBorder() {
-			if (['primary', 'success', 'error', 'warning'].indexOf(this.type) >= 0 && !this.plain) {
+			if ((['primary', 'success', 'error', 'warning'].indexOf(this.type) >= 0 && !this.plain)||this.borderNone) {
 				return '';
 			} else {
 				return 'u-hairline-border';

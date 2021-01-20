@@ -2,6 +2,8 @@
   "navigationBarTitleText": "消息列表",
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "u-avatar": "/uview-ui/components/u-avatar/u-avatar"
+    "u-avatar": "/uview-ui/components/u-avatar/u-avatar",
+    "u-empty": "/uview-ui/components/u-empty/u-empty",
+    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore"
   }
 }

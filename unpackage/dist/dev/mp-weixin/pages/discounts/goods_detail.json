@@ -2,6 +2,9 @@
   "navigationBarTitleText": "直销商品详情",
   "usingComponents": {
     "u-cell-group": "/uview-ui/components/u-cell-group/u-cell-group",
-    "u-cell-item": "/uview-ui/components/u-cell-item/u-cell-item"
+    "u-cell-item": "/uview-ui/components/u-cell-item/u-cell-item",
+    "u-image": "/uview-ui/components/u-image/u-image",
+    "u-gap": "/uview-ui/components/u-gap/u-gap",
+    "u-button": "/uview-ui/components/u-button/u-button"
   }
 }

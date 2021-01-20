@@ -5,7 +5,7 @@
 			<view class="u-flex u-p-30">
 				<u-avatar :src="storeD.merchLogo" show-level size="100"></u-avatar>
 				<view class="right">
-					<view class="u-font-32 u-p-b-10">{{storeD.merchName}}</view>
+					<view class="u-font-32 u-p-b-10">{{ storeD.merchName }}</view>
 					<view class="u-flex">
 						<uni-rate disabled disabledColor="#FED150" size="20" allow-half :value="3.5" />
 						<text class="u-p-l-20">4.5</text>
@@ -14,11 +14,11 @@
 			</view>
 
 			<view class="u-flex u-p-t-20">
-				<view class="u-flex-1 u-flex-col u-col-center">
+				<view class="u-flex-1 u-flex-col u-col-center" @click="doNothing">
 					<u-icon name="scan" size="70"></u-icon>
 					<text class="u-p-t-10 u-font-30">核销</text>
 				</view>
-				<view class="u-flex-1 u-flex-col u-col-center">
+				<view class="u-flex-1 u-flex-col u-col-center" @click="doNothing">
 					<u-icon name="qrcode" custom-prefix="custom-icon" size="70"></u-icon>
 					<text class="u-p-t-10 u-font-30">商家码</text>
 				</view>
@@ -28,7 +28,7 @@
 		<view class="tools">
 			<!-- 钱包 -->
 			<view class="cell-cont">
-				<u-cell-group><u-cell-item icon="red-packet-fill" :icon-style="{color:'#F06C7A'}" title="钱包" value="收益明细" @click="goWallet"></u-cell-item></u-cell-group>
+				<u-cell-group><u-cell-item icon="red-packet-fill" :icon-style="{ color: '#F06C7A' }" title="钱包" value="收益明细" @click="goWallet"></u-cell-item></u-cell-group>
 				<view class="u-flex data-cont">
 					<u-grid :col="3" :border="false">
 						<u-grid-item>
@@ -48,7 +48,9 @@
 			</view>
 			<!-- 今日经营数据 -->
 			<view class="cell-cont">
-				<u-cell-group><u-cell-item icon="calendar-fill" :icon-style="{color:'#F06C7A'}" title="今日经营数据" value="查看全部订单" @click="goD"></u-cell-item></u-cell-group>
+				<u-cell-group>
+					<u-cell-item icon="calendar-fill" :icon-style="{ color: '#F06C7A' }" title="今日经营数据" value="查看全部订单" @click="goD"></u-cell-item>
+				</u-cell-group>
 				<view class="u-flex data-cont">
 					<u-grid :col="4" :border="false">
 						<u-grid-item>
@@ -72,16 +74,20 @@
 			</view>
 			<!-- 推荐工具 -->
 			<view class="cell-cont">
-				<u-cell-group><u-cell-item icon="setting-fill" :icon-style="{color:'#F06C7A'}" title="推荐工具" :arrow="false"></u-cell-item></u-cell-group>
+				<u-cell-group><u-cell-item icon="setting-fill" :icon-style="{ color: '#F06C7A' }" title="推荐工具" :arrow="false"></u-cell-item></u-cell-group>
 				<view class="u-flex data-cont">
 					<u-grid :col="3" :border="false">
-						<u-grid-item>
+						<u-grid-item @click="doNothing">
 							<u-icon name="sign" custom-prefix="custom-icon" :size="46" color="#3998EA"></u-icon>
 							<view class="grid-text">签到</view>
 						</u-grid-item>
-						<u-grid-item>
+						<u-grid-item @click="doNothing">
 							<u-icon name="consociation" custom-prefix="custom-icon" :size="46" color="#3998EA"></u-icon>
 							<view class="grid-text">品牌加盟</view>
+						</u-grid-item>
+						<u-grid-item @click="returnLogin">
+							<u-icon name="exit" custom-prefix="custom-icon" :size="46" color="#3998EA"></u-icon>
+							<view class="grid-text">退出账号</view>
 						</u-grid-item>
 					</u-grid>
 				</view>
@@ -118,6 +124,30 @@ export default {
 			this.$Router.push({
 				name: 'user_wallet'
 			});
+		},
+		// 退出登录
+		returnLogin() {
+			let that = this;
+			uni.showModal({
+				title: '退出确认',
+				content: '是否确退出当前账号',
+				success(res) {
+					if (res.confirm) {
+						that.$api('login.login_out').then(res => {
+							uni.reLaunch({
+								url: '/pages/login/login',
+								success() {
+									that.$tools.msg('退出成功');
+								}
+							});
+						});
+					}
+				}
+			});
+		},
+		// 暂未开放
+		doNothing() {
+			this.$tools.msg('暂未开放，敬请期待~');
 		},
 		//获取统计数据
 		getData() {

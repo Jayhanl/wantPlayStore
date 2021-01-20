@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "资讯详情",
+  "usingComponents": {
+    "u-avatar": "/uview-ui/components/u-avatar/u-avatar",
+    "u-image": "/uview-ui/components/u-image/u-image"
+  }
+}

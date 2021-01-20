@@ -5,7 +5,7 @@
 			<view class="title">欢迎登录想玩</view>
 			<input class="u-border-bottom" type="number" maxlength="11" v-model="accountName" placeholder="请输入手机号" />
 			<view class="tips">未注册的手机号验证后自动发布想玩账号</view>
-			<button @tap="submit"  :class="['getCaptcha',accountName?'bg-main':'']">获取短信验证码</button>
+			<button @tap="submit" :class="['getCaptcha', accountName ? 'bg-main' : '']">获取短信验证码</button>
 			<view class="alternative">
 				<view class="password"><!-- 密码登录 --></view>
 				<view class="issue">遇到问题</view>
@@ -13,14 +13,19 @@
 		</view>
 		<view class="buttom">
 			<view class="loginType">
-				<view class="wechat item">
-					<view class="icon"><u-icon size="70" name="weixin-fill" color="rgb(83,194,64)"></u-icon></view>
-					微信
-				</view>
-				<view class="QQ item">
-					<view class="icon"><u-icon size="70" name="qq-fill" color="rgb(17,183,233)"></u-icon></view>
-					QQ
-				</view>
+				<u-button :custom-style="btn" border-none plain open-type="getPhoneNumber" @getphonenumber="bindgetphonenumber">
+					<view class="wechat item">
+						<view class="icon"><u-icon size="70" name="weixin-fill" color="rgb(83,194,64)"></u-icon></view>
+						<view class="text">微信</view>
+					</view>
+				</u-button>
+
+				<u-button :custom-style="btn" border-none plain open-type="getPhoneNumber" @click="doNoting">
+					<view class="QQ item">
+						<view class="icon"><u-icon size="70" name="qq-fill" color="rgb(17,183,233)"></u-icon></view>
+						<view class="text">QQ</view>
+					</view>
+				</u-button>
 			</view>
 			<view class="hint">
 				登录代表同意
@@ -29,6 +34,7 @@
 			</view>
 		</view>
 		<u-toast ref="uToast" />
+		<version />
 	</view>
 </template>
 
@@ -36,11 +42,15 @@
 export default {
 	data() {
 		return {
+			btn: {
+				height: '140rpx',
+				paddingTop: '20rpx'
+			},
 			accountName: ''
 		};
 	},
 	onLoad() {
-		console.log(this.$store.user.token)
+		// console.log(this.$store.user.token)
 	},
 	computed: {
 		inputStyle() {
@@ -53,12 +63,39 @@ export default {
 		}
 	},
 	methods: {
+		// 暂未开放
+		doNoting() {
+			this.$tools.msg('暂未开放');
+		},
+		//手机授权
+		bindgetphonenumber(e) {
+			let that = this;
+			if (e.detail.errMsg === 'getPhoneNumber:ok') {
+				this.$api('login.wx_login', {
+					encryptedData: e.detail.encryptedData,
+					iv: e.detail.iv
+				}).then(res => {
+					that.$tools.login(res.data);
+					// uni.redirectTo({
+					// 	url: '/pages/login/enter',
+					// 	success() {
+					// 		uni.showToast({
+					// 			title: '注册成功'
+					// 		});
+					// 	}
+					// });
+				});
+			} else {
+				this.$tools.msg('登录失败');
+			}
+		},
+		// 注册登录
 		submit() {
 			if (this.$u.test.mobile(this.accountName)) {
 				this.$Router.push({
 					path: '/pages/login/code',
-					query:{accountName:this.accountName}
-				})
+					query: { accountName: this.accountName }
+				});
 			} else {
 				this.$refs.uToast.show({
 					title: '请输入正确的手机号码',
@@ -115,7 +152,7 @@ export default {
 	.buttom {
 		.loginType {
 			display: flex;
-			padding: 300rpx 150rpx 100rpx;
+			padding: 200rpx 150rpx 100rpx;
 			justify-content: space-between;
 
 			.item {
@@ -125,8 +162,10 @@ export default {
 				color: $u-content-color;
 				font-size: 28rpx;
 			}
+			.text {
+				margin-top: -20rpx;
+			}
 		}
-
 		.hint {
 			padding: 20rpx 40rpx;
 			font-size: 20rpx;

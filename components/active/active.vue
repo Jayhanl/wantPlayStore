@@ -12,7 +12,7 @@
 					</view>
 				</view>
 			</view>
-			<u-read-more toggle text-indent="0" show-height="180">
+			<u-read-more class="u-m-t-10" toggle text-indent="0" show-height="180">
 				<rich-text :nodes="item.minfoDesc"></rich-text>
 			</u-read-more>
 			<view class="img">

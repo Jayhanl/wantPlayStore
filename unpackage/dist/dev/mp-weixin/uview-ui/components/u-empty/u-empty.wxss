@@ -65,6 +65,7 @@
   -webkit-align-items: center;
           align-items: center;
   height: 100%;
+  padding-top: 50rpx;
 }
 .u-image.data-v-2e22d22c {
   margin-bottom: 20rpx;

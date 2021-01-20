@@ -2,7 +2,7 @@
 	<view>
 		<view v-for="item in dataList" :key="item.couponId" class="goods-cont">
 			<view class="goods-item">
-				<!-- <u-image :src="item.surfaceImg" width="150" height="150" border-radius="10" :fade="true" duration="450" :lazy-load="true" mode="widthFix"></u-image> -->
+				<!-- <u-image :src="item.surfaceImg" width="150" height="150" border-radius="10" mode="widthFix"></u-image> -->
 				<u-icon name="coupon" color="#3998EA" custom-prefix="custom-icon" size="150"></u-icon>
 				<view class="goods-info">
 					<text>
@@ -19,7 +19,7 @@
 					</text>
 					<text>
 						使用规则：
-						<text>{{ item.couponRuleData.crProduct }}</text>
+						<text>{{ item.couponRuleData.crProduct==='0'?'全场通用':item.couponRuleData.crProduct }}</text>
 					</text>
 					<text>
 						截止时间：
@@ -27,7 +27,7 @@
 					</text>
 					<text>
 						商品状态：
-						<text>{{ item.couponRuleData.isDisable ? '正常' : '已过期' }}</text>
+						<text>{{ item.couponRuleData.isDisable ? '不可用': '正常'  }}</text>
 					</text>
 				</view>
 			</view>

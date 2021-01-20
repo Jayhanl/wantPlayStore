@@ -28,6 +28,7 @@
 		</u-form>
 		<u-button class="u-m-t-40" type="primary" @click="submit">提交入驻</u-button>
 		<!-- <view class="map_container"></view> -->
+		<version />
 	</view>
 </template>
 
@@ -128,12 +129,12 @@ export default {
 	},
 	methods: {
 		//获取商家主营分类
-		getData(){
+		getData() {
 			this.$api('data.merch_cate', {
 				parentId: ''
 			}).then(res => {
 				console.log(res.data);
-				this.masterList = res.data
+				this.masterList = res.data;
 			});
 		},
 		//选择位置
@@ -183,14 +184,14 @@ export default {
 				this.$tools.msg('请上传营业资质');
 				return;
 			}
-			url = this.$tools.imgAddSuffix(this.$refs.yyzz.lists.map(item=>item.url));
+			url = this.$tools.imgAddSuffix(this.$refs.yyzz.lists.map(item => item.url));
 			this.$refs.uForm.validate(valid => {
 				if (valid) {
 					console.log('验证成功');
 					this.$api('login.create_data', {
 						uscCode: formD.uscCode,
 						companyName: formD.companyName,
-						companyType: formD.companyType+1,
+						companyType: formD.companyType + 1,
 						merchName: formD.merchName,
 						merchMaster: formD.merchMaster,
 						masterMobile: formD.masterMobile,
@@ -203,7 +204,7 @@ export default {
 							url: '/pages/home/home',
 							success() {
 								uni.showToast({
-									title: '入住成功'
+									title: '已提交，待审核'
 								});
 							}
 						});
@@ -213,7 +214,7 @@ export default {
 		}
 	},
 	onLoad() {
-		this.getData()
+		this.getData();
 		// //#ifdef MP-WEIXIN
 		// this.amapPlugin = new amap.AMapWX({
 		// 	key: this.amapKey

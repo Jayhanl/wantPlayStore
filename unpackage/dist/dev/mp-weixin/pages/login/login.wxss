@@ -94,7 +94,7 @@
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  padding: 300rpx 150rpx 100rpx;
+  padding: 200rpx 150rpx 100rpx;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
           justify-content: space-between;
@@ -112,6 +112,9 @@
           align-items: center;
   color: #606266;
   font-size: 28rpx;
+}
+.wrap .buttom .loginType .text.data-v-b237504c {
+  margin-top: -20rpx;
 }
 .wrap .buttom .hint.data-v-b237504c {
   padding: 20rpx 40rpx;

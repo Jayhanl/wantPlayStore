@@ -154,7 +154,6 @@ text {
 			.u-p-#{$short}-#{$i} {
 				padding-#{$long}: $i + rpx!important;
 			}
-			
 			// 完整版，结果如：u-margin-left-30
 			// 定义外边距
 			.u-margin-#{$long}-#{$i} {

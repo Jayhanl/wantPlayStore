@@ -28,7 +28,7 @@
 				</view>
 				<view>
 					免单产品推广：
-					<text class="u-m-r-20 u-content-color">{{ info.merchMobile }}</text>
+					<text class="u-m-r-20 u-content-color">{{ merchStatus === 4 ? '有' : '无' }}</text>
 					<u-button type="primary" size="mini" ripple @click="applyPromote">添加产品</u-button>
 				</view>
 			</view>
@@ -61,10 +61,10 @@
 				<u-tr v-for="(item, index) in dataList[0]" :key="item.goodsId">
 					<u-td class="u-td">{{ item.goodsTitle }}</u-td>
 					<u-td class="u-td">{{ item.goodsLimit }}份</u-td>
-					<u-td class="u-td">{{ item.gpmIncome }}元/份</u-td>
+					<u-td class="u-td">{{ item.income }}元/份</u-td>
 					<u-td class="u-td">{{ item.issueEndDate }}</u-td>
 					<u-td class="u-td">{{ item.publicityMerchNum }}家</u-td>
-					<u-td class="u-td">{{ item.pubOrderStatusString }}</u-td>
+					<u-td class="u-td">{{ item.pubOrderStatusString + (item.isSoldOut ? '(已下架)' : '(上架中)') }}</u-td>
 					<u-td class="u-td">
 						<u-button v-if="item.pubOrderStatus === 1" :custom-style="{ padding: '0 10rpx' }" type="primary" size="mini" ripple @click="showSheetGoods(item)">
 							操作
@@ -72,8 +72,8 @@
 					</u-td>
 				</u-tr>
 			</u-table>
-			<u-empty :show="dataList.length === 0 && dataStatus === 'nomore'" mode="list"></u-empty>
-			<u-loadmore :status="dataStatus" @loadmore="getMore" />
+			<u-empty :show="dataList[current - 1].length === 0 && dataStatus[current - 1] === 'nomore'" mode="list"></u-empty>
+			<u-loadmore :status="dataStatus[current - 1]" @loadmore="getMore" />
 		</view>
 		<!-- 流量推广 -->
 		<view v-if="current === 2">
@@ -123,6 +123,7 @@ export default {
 		return {
 			current: 0,
 			platform: {},
+			merchStatus: 0,
 			info: {
 				syggStatus: 0,
 				pickedStatus: 0
@@ -146,6 +147,7 @@ export default {
 		};
 	},
 	onLoad() {
+		this.merchStatus = this.$store.state.user.tokenInfo.status;
 		// this.getData();
 		// this.getList();
 	},
@@ -168,16 +170,29 @@ export default {
 				this.getList();
 			}
 		},
+		applyPromote() {
+			uni.showModal({
+				content: '是否前往“优惠管理”添加免单产品',
+				success: res => {
+					if (res.confirm) {
+						this.$Router.push({
+							name: 'discounts',
+							params: { current: 3 }
+						});
+					}
+				}
+			});
+		},
 		// 前往发布商品推广
 		goCreateGoods() {
 			this.$Router.push({
-				name: 'promote_create_goods'
+				name: 'promote_goods_create'
 			});
 		},
 		// 前往发布流量推广
 		goCreateFlow() {
 			this.$Router.push({
-				name: 'promote_create_flow'
+				name: 'promote_flow_create'
 			});
 		},
 		// 前往历史推广
@@ -234,7 +249,7 @@ export default {
 		// 显示商品推广操作
 		showSheetGoods(item) {
 			let that = this,
-				list = [item.isSoldOut ? '下架' : '上架', '修改商品', '邀请商家'];
+				list = [item.isSoldOut ? '上架' : '下架', '修改商品', '邀请商家'];
 			uni.showActionSheet({
 				itemList: list,
 				success: function(res) {
@@ -312,7 +327,7 @@ export default {
 			let current = this.current - 1;
 			if (load === 'reload') this.page[current] = 1;
 			this.dataStatus[current] = 'loading';
-			this.$api(`${this.api[current]}`, {
+			this.$api(this.api[current], {
 				page: this.page[current],
 				limit: this.limit[current]
 			})

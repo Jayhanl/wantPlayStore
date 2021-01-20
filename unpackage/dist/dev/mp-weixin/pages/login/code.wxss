@@ -48,7 +48,7 @@
 /* 透明度 */
 /* 文章场景相关 */
 .wrap.data-v-71cae08c {
-  padding: 80rpx;
+  padding: 60rpx;
 }
 .box.data-v-71cae08c {
   margin: 30rpx 0;

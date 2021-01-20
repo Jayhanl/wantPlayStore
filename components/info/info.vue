@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view v-for="item in dataList" :key="item.infoId" class="info-item">
+		<view v-for="item in dataList" :key="item.infoId" class="info-item" @click="goDetail(item)">
 			<u-image
 				:src="item.surfaceImg"
 				width="150"
@@ -28,7 +28,17 @@ export default {
 	},
 	props: {
 		dataList: Array
-	}
+	},
+	methods:{
+		//前往详情
+		goDetail(item) {
+			this.$Router.push({
+				name: 'home_info_detail',
+				params: {
+					item: item
+				}
+			});
+		},}
 };
 </script>
 

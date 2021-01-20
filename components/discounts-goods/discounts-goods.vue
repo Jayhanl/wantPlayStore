@@ -1,8 +1,8 @@
 <template>
 	<view>
-		<view v-for="item in dataList" :key="item.couponId" class="goods-cont">
+		<view v-for="(item,index) in dataList" :key="item.goodsId" class="goods-cont">
 			<view class="goods-item">
-				<u-image :src="item.goodsImageUrl" width="150" height="150" border-radius="10" :fade="true" duration="450" :lazy-load="true" mode="widthFix"></u-image>
+				<u-image :src="item.goodsImageUrl" width="150" height="150" border-radius="10" mode="widthFix"></u-image>
 				<view class="goods-info">
 					<text>
 						标题：
@@ -34,13 +34,13 @@
 					</text>
 					<text>
 						商品状态：
-						<text>{{ item.gpmIsSoldOut?'正常':'已下架' }}</text>
+						<text>{{ item.isSoldOut?'已下架':'正常' }}</text>
 					</text>
 				</view>
 			</view>
 			<view class="goods-btns">
 				<u-button class="u-m-r-20" plain ripple shape="circle" size="mini" type="primary" @click="goDetail(item)">查看详情</u-button>
-				<u-button plain ripple shape="circle" size="mini" :type="item.isSoldOut?'error':'success'" @click="updateStatus(item)">{{item.isSoldOut?'下架':'上架'}}</u-button>
+				<u-button plain ripple shape="circle" size="mini" :type="item.isSoldOut?'success':'error'" @click="updateStatus(item)">{{item.isSoldOut?'上架':'下架'}}</u-button>
 			</view>
 		</view>
 	</view>
@@ -58,7 +58,7 @@ export default {
 		//前往详情
 		goDetail(item) {
 			this.$Router.push({
-				name: 'goods_detail',
+				name: 'discounts_goods_detail',
 				params: {
 					item: item
 				}

@@ -122,7 +122,7 @@ export default {
 		// 前往发布流量推广
 		goCreateFlow() {
 			this.$Router.push({
-				name: 'promote_create_flow'
+				name: 'promote_flow_create'
 			});
 		},
 		//获取商家数据

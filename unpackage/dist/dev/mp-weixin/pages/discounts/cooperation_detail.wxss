@@ -52,15 +52,4 @@
   font-size: 36rpx;
   font-weight: bold;
 }
-.content .bottom-fixed.data-v-eb8ed32a {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 20rpx 40rpx;
-  z-index: 99;
-  text-align: right;
-  background-color: #FFF;
-  border-top: 1px solid #F2F2F2;
-  box-shadow: 0 2rpx 8rpx #f1f1f1;
-}
 

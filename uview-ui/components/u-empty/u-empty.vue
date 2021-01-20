@@ -178,6 +178,7 @@
 		justify-content: center;
 		align-items: center;
 		height: 100%;
+		padding-top: 50rpx;
 	}
 
 	.u-image {

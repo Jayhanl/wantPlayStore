@@ -32,7 +32,7 @@
 					v-model="startShow"
 					:params="dateParams"
 					title="开始时间"
-					@confirm="e => (form.issueStartDate = e.year + '-' + e.month + '-' + e.day + ' ' + e.hour + ':' + e.minute)"
+					@confirm="e => (form.issueStartDate = e.year + '-' + e.month + '-' + e.day + ' ' + e.hour +':00:00')"
 				></u-picker>
 			</u-form-item>
 			<u-form-item label="截止时间" prop="issueEndDate">
@@ -42,7 +42,7 @@
 					v-model="endShow"
 					:params="dateParams"
 					title="截止日期"
-					@confirm="e => (form.issueEndDate = e.year + '-' + e.month + '-' + e.day + ' ' + e.hour + ':' + e.minute)"
+					@confirm="e => (form.issueEndDate = e.year + '-' + e.month + '-' + e.day + ' ' + e.hour +':00:00')"
 				></u-picker>
 			</u-form-item>
 			<u-form-item label="商品提成设置" prop="income"><u-input v-model="form.income" type="number" maxlength="8" placeholder="请输入商品提成设置(元/份)" /></u-form-item>
@@ -68,8 +68,7 @@ export default {
 				year: true,
 				month: true,
 				day: true,
-				hour: true,
-				minute: true
+				hour: true
 			},
 			startShow: false,
 			endShow: false,
@@ -175,7 +174,7 @@ export default {
 		//选择优惠产品
 		selectProduct() {
 			this.$Router.push({
-				name: 'select_product'
+				name: 'product_select'
 			});
 		},
 		//发布
@@ -216,8 +215,8 @@ export default {
 									goodsLimit: formD.goodsLimit || 0,
 									goodsGetNum: formD.goodsGetNum,
 									goodsGetLimit: formD.goodsGetLimit || 0,
-									issueStartDate: formD.issueStartDate + ':00',
-									issueEndDate: formD.issueEndDate + ':00',
+									issueStartDate: formD.issueStartDate,
+									issueEndDate: formD.issueEndDate,
 									income: formD.income,
 									isOpen: formD.isOpen
 								}).then(res => {

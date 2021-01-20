@@ -5,18 +5,24 @@
 
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/login/login",
+			"name": "login",
+			"aliasPath": "/",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		}, {
 			"path": "pages/home/home",
 			"name": "home",
-			"aliasPath": "/",
 			"style": {
 				"navigationBarTitleText": "首页",
 				"enablePullDownRefresh": true
 			}
 		}, {
-			"path": "pages/login/login",
-			"name": "login",
+			"path": "pages/home/info_detail",
+			"name": "home_info_detail",
 			"style": {
-				"navigationBarTitleText": "登录"
+				"navigationBarTitleText": "资讯详情"
 			}
 		}, {
 			"path": "pages/login/code",
@@ -95,14 +101,14 @@
 				"enablePullDownRefresh": true
 			}
 		}, {
-			"path": "pages/promote/create_goods",
-			"name": "promote_create_goods",
+			"path": "pages/promote/goods_create",
+			"name": "promote_goods_create",
 			"style": {
 				"navigationBarTitleText": "发布商品推广"
 			}
-		},  {
-			"path": "pages/promote/create_flow",
-			"name": "promote_create_flow",
+		}, {
+			"path": "pages/promote/flow_create",
+			"name": "promote_flow_create",
 			"style": {
 				"navigationBarTitleText": "发布流量推广"
 			}
@@ -133,73 +139,98 @@
 				"navigationBarTitleText": "优惠管理",
 				"enablePullDownRefresh": true
 			}
-		},   {
-			"path": "pages/discounts/create_goods",
-			"name": "discounts_create_goods",
+		}, {
+			"path": "pages/discounts/goods_create",
+			"name": "discounts_goods_create",
 			"style": {
 				"navigationBarTitleText": "添加直销商品",
 				"enablePullDownRefresh": true
 			}
-		},   {
+		}, {
+			"path": "pages/discounts/goods_update",
+			"name": "discounts_goods_update",
+			"style": {
+				"navigationBarTitleText": "修改直销商品"
+			}
+		}, {
+			"path": "pages/discounts/goods_detail",
+			"name": "discounts_goods_detail",
+			"style": {
+				"navigationBarTitleText": "直销商品详情"
+			}
+		}, {
 			"path": "pages/discounts/cooperation",
 			"name": "cooperation_goods",
 			"style": {
 				"navigationBarTitleText": "获取合作商品",
 				"enablePullDownRefresh": true
 			}
-		},    {
-			"path": "pages/discounts/select_product",
-			"name": "select_product",
+		}, {
+			"path": "pages/discounts/product_select",
+			"name": "product_select",
 			"style": {
 				"navigationBarTitleText": "选择优惠产品",
 				"enablePullDownRefresh": true
 			}
-		},    {
-			"path": "pages/discounts/create_product",
-			"name": "create_product",
+		}, {
+			"path": "pages/discounts/product_create",
+			"name": "product_create",
 			"style": {
 				"navigationBarTitleText": "添加优惠产品",
 				"enablePullDownRefresh": true
 			}
-		},   {
-			"path": "pages/discounts/create_platform",
-			"name": "discounts_create_platform",
+		}, {
+			"path": "pages/discounts/product_update",
+			"name": "product_update",
 			"style": {
-				"navigationBarTitleText": "添加平台推广商品",
+				"navigationBarTitleText": "修改优惠产品",
 				"enablePullDownRefresh": true
 			}
-		},  {
-			"path": "pages/discounts/goods_detail",
-			"name": "goods_detail",
-			"style": {
-				"navigationBarTitleText": "直销商品详情"
-			}
-		},  {
-			"path": "pages/discounts/platform_detail",
-			"name": "platform_detail",
-			"style": {
-				"navigationBarTitleText": "平台商品详情"
-			}
-		},  {
+		}, {
 			"path": "pages/discounts/product_detail",
 			"name": "product_detail",
 			"style": {
 				"navigationBarTitleText": "优惠商品详情"
 			}
-		},  {
+		}, {
+			"path": "pages/discounts/platform_create",
+			"name": "discounts_platform_create",
+			"style": {
+				"navigationBarTitleText": "添加平台推广商品",
+				"enablePullDownRefresh": true
+			}
+		}, {
+			"path": "pages/discounts/platform_update",
+			"name": "discounts_platform_update",
+			"style": {
+				"navigationBarTitleText": "修改平台推广商品"
+			}
+		}, {
+			"path": "pages/discounts/platform_history",
+			"name": "discounts_platform_history",
+			"style": {
+				"navigationBarTitleText": "平台商品操作记录"
+			}
+		}, {
+			"path": "pages/discounts/platform_detail",
+			"name": "platform_detail",
+			"style": {
+				"navigationBarTitleText": "平台商品详情"
+			}
+		}, {
 			"path": "pages/discounts/cooperation_detail",
 			"name": "cooperation_detail",
 			"style": {
 				"navigationBarTitleText": "合作优惠商品详情"
 			}
-		},  {
+		}, {
 			"path": "pages/member/member",
 			"name": "member",
 			"style": {
 				"navigationBarTitleText": "会员管理",
 				"enablePullDownRefresh": true
 			}
-		},  {
+		}, {
 			"path": "pages/user/user",
 			"name": "user",
 			"style": {
@@ -208,7 +239,7 @@
 				"navigationBarTitleText": "我的",
 				"enablePullDownRefresh": true
 			}
-		},  {
+		}, {
 			"path": "pages/user/wallet",
 			"name": "user_wallet",
 			"style": {

@@ -5,7 +5,7 @@
 
 		<!-- 栅格系统 -->
 		<u-grid col="4" class="category" :border="false" @click="goCategory">
-			<u-grid-item v-for="(item, index) in categoryList" :index="index" :key="index">
+			<u-grid-item v-for="(item, index) in categoryList" :index="index" :key="item.id">
 				<image :src="item.img" class="category-img"></image>
 				<view class="grid-text">{{ item.name }}</view>
 			</u-grid-item>
@@ -18,6 +18,7 @@
 			<u-empty :show="dataList.length===0&&dataStatus==='nomore'" mode="list"></u-empty>
 			<u-loadmore :status="dataStatus" @loadmore="getMore" />
 		</view>
+		<version />
 	</view>
 </template>
 
@@ -30,12 +31,11 @@ export default {
 			dataStatus:'loadmore',
 			bannerList: [],
 			dataList: [],
-			categoryList: [
-				// 分类菜单
-				{ id: 1, name: '店铺管理', img: '/static/category/1.png', url: 'store' },
-				{ id: 2, name: '优惠管理', img: '/static/category/2.png', url: 'discounts' },
-				{ id: 3, name: '推广管理', img: '/static/category/3.png',url: 'promote'  },
-				{ id: 4, name: '会员管理', img: '/static/category/4.png',url:'member' }
+			categoryList: [// 分类菜单
+				{ id: 1, name: '店铺管理', img: '/static/category/store.png', url: 'store' },
+				{ id: 2, name: '优惠管理', img: '/static/category/discounts.png', url: 'discounts' },
+				{ id: 3, name: '推广管理', img: '/static/category/promote.png',url: 'promote'  },
+				{ id: 4, name: '会员管理', img: '/static/category/member.png',url:'member' }
 			]
 		};
 	},
@@ -120,8 +120,8 @@ export default {
 	margin-bottom: 10rpx;
 }
 .category-img {
-	width: 55rpx;
-	height: 55rpx;
+	width: 65rpx;
+	height: 65rpx;
 	margin-bottom: 5rpx;
 }
 

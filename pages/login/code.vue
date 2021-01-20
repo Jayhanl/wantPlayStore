@@ -12,6 +12,7 @@
 		</view>
 		<!-- <button @click="register" :disabled="accountCode.length !== 6" :class="['getCaptcha', accountCode.length === 6 ? 'bg-main' : '']">完成注册</button> -->
 		<u-toast ref="uToast" />
+		<version />
 	</view>
 </template>
 
@@ -46,7 +47,7 @@ export default {
 				});
 				uni.navigateBack();
 			}
-			this.$api('login.register_code', {
+			this.$api('login.login_code', {
 				accountName: this.accountName
 			}).then(res => {
 				this.show = false;
@@ -66,39 +67,32 @@ export default {
 				console.log(res);
 			});
 		},
-		//注册
-		register() {
-			this.$api('login.account_register', {
+		//注册登录
+		register(value) {
+			this.accountCode = value;
+			this.$api('login.account_login', {
 				accountName: this.accountName,
 				accountCode: this.accountCode
 			})
 				.then(res => {
-					uni.redirectTo({
-						url: '/pages/login/enter',
-						success() {
-							uni.showToast({
-								title: '注册成功'
-							});
-						}
-					});
-					// this.$Router
-					// 	.push({
-					// 		path: '/pages/home/home'
-					// 	})
-					console.log(res);
+					this.$tools.login(res.data);
+					// uni.redirectTo({
+					// 	url: '/pages/login/enter',
+					// 	success() {
+					// 		uni.showToast({
+					// 			title: '注册成功'
+					// 		});
+					// 	}
+					// });
 				})
 		},
-		// 输入完验证码最后一位执行
-		finish(value) {
-			this.accountCode = value;
-		}
 	}
 };
 </script>
 
 <style lang="scss" scoped>
 .wrap {
-	padding: 80rpx;
+	padding: 60rpx;
 }
 
 .box {

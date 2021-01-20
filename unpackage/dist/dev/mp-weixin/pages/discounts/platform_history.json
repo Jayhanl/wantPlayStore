@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "平台商品操作记录",
+  "usingComponents": {
+    "discounts-platform-history": "/components/discounts-platform-history/discounts-platform-history",
+    "u-empty": "/uview-ui/components/u-empty/u-empty",
+    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore"
+  }
+}

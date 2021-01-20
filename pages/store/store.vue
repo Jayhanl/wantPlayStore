@@ -160,7 +160,7 @@ export default {
 		}
 	},
 	onShow() {
-		if (this.current === 0) this.getData();
+		if (this.current === 0 || this.current === 1) this.getData();
 		else if (this.current === 2) this.getList('reload');
 	},
 	onPullDownRefresh() {
@@ -190,19 +190,33 @@ export default {
 		openDoor() {
 			let that = this,
 				status = that.store.isOpen;
-			uni.showModal({
-				title: `${status ? '休息' : '营业'}确认`,
-				success: res => {
-					if (res.confirm) {
-						that.$api(`store.${status ? 'close_store' : 'open_store'}`).then(res => {
-							that.store.isOpen = status ? 0 : 1;
-							uni.showToast({
-								title: '操作成功'
+			if (this.$store.state.user.tokenInfo.status !== 4) {
+				uni.showModal({
+					content: '尚未添加免单产品，是否前往添加',
+					success: res => {
+						if (res.confirm) {
+							this.$Router.push({
+								name: 'discounts',
+								params: { current: 3 }
 							});
-						});
+						}
 					}
-				}
-			});
+				});
+			}else{
+				uni.showModal({
+					title: `${status ? '休息' : '营业'}确认`,
+					success: res => {
+						if (res.confirm) {
+							that.$api(`store.${status ? 'close_store' : 'open_store'}`).then(res => {
+								that.store.isOpen = status ? 0 : 1;
+								uni.showToast({
+									title: '操作成功'
+								});
+							});
+						}
+					}
+				});
+			}
 		},
 		// 当前选择的Banner图
 		chooseBanner(ists, name) {

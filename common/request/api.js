@@ -5,11 +5,23 @@
 export default {
 	/** 登录 **/
 	login: {
-		register_code: { //手机注册验证码
-			url: 'login/register_code',
+		login_code: { //手机登录验证码
+			url: 'login/login_code',
 			method: 'GET',
 			loading: true,
 			msg: '请求中'
+			// desc: '初始化数据',
+		},
+		wx_login: { //手机号登录
+			url: 'login/wx_login',
+			method: 'POST',
+			loading: true,
+			// desc: '初始化数据',
+		},
+		login_out: { //手机号登录
+			url: 'login/login_out',
+			method: 'POST',
+			loading: true,
 			// desc: '初始化数据',
 		},
 		wx_session: { //微信code
@@ -18,8 +30,8 @@ export default {
 			loading: true,
 			msg: '请求中'
 		},
-		account_register: { //手机账号注册
-			url: 'login/account_register',
+		account_login: { //手机账号登录
+			url: 'login/account_login',
 			method: 'POST',
 			loading: true,
 		},
@@ -36,7 +48,6 @@ export default {
 		homepage: { //首页数据
 			url: 'data/homepage',
 			method: 'GET',
-			loading: true,
 		},
 		merch_cate: { //商家主营类型
 			url: 'data/merch_cate',
@@ -178,7 +189,7 @@ export default {
 
 	/** 流量推广 ↓ **/
 	lltg: {
-		doing_ist: { //推广中列表
+		doing_list: { //推广中列表
 			url: 'lltg/doing_list',
 			method: 'GET',
 		},
@@ -291,6 +302,11 @@ export default {
 		need: {
 			goods_list: { //目前正在推广的商品
 				url: 'publicity/need/goods/data/page',
+				urlType: 'Bin',
+				method: 'GET',
+			},
+			merch_list: { //目前正在推广的商品
+				url: 'publicity/need/goods/merch/data/page',
 				urlType: 'Bin',
 				method: 'GET',
 			},
